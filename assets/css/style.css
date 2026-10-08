@@ -1,0 +1,850 @@
+/* =========================================================
+   CARLOS VINICIUS — PORTFÓLIO
+   CSS complementar ao Tailwind CSS
+========================================================= */
+
+/* =========================================================
+   VARIÁVEIS
+========================================================= */
+
+:root {
+  --color-bg: #05070b;
+  --color-surface: #090d14;
+  --color-surface-light: #0d131d;
+
+  --color-brand: #38cfff;
+  --color-brand-dark: #0284c7;
+
+  --color-text: #f8fafc;
+  --color-muted: #94a3b8;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-brand: rgba(56, 207, 255, 0.2);
+
+  --radius: 1rem;
+
+  --transition: 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================================================
+   RESET / BASE
+========================================================= */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+  background:
+    radial-gradient(
+      circle at 50% -20%,
+      rgba(14, 165, 233, 0.08),
+      transparent 40%
+    ),
+    var(--color-bg);
+}
+
+::selection {
+  color: #ffffff;
+  background: rgba(14, 165, 233, 0.35);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #05070b;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0369a1;
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.site-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.background-grid {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(56, 207, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 207, 255, 0.035) 1px, transparent 1px);
+
+  background-size: 55px 55px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    rgba(0, 0, 0, 0.55) 45%,
+    transparent 100%
+  );
+}
+
+.background-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+
+  border-radius: 999px;
+
+  filter: blur(120px);
+  opacity: 0.08;
+
+  animation: floatGlow 12s ease-in-out infinite alternate;
+}
+
+.background-glow-one {
+  top: 5%;
+  right: -200px;
+  background: #0ea5e9;
+}
+
+.background-glow-two {
+  bottom: 10%;
+  left: -250px;
+  background: #2563eb;
+  animation-delay: -5s;
+}
+
+@keyframes floatGlow {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(40px, -30px, 0);
+  }
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+#site-header {
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+#site-header.scrolled {
+  border-color: rgba(56, 207, 255, 0.1);
+  background: rgba(5, 7, 11, 0.92);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.nav-link {
+  position: relative;
+
+  color: #64748b;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  transition: color var(--transition);
+}
+
+.nav-link::after {
+  position: absolute;
+  content: "";
+
+  left: 0;
+  bottom: -8px;
+
+  width: 100%;
+  height: 1px;
+
+  transform: scaleX(0);
+  transform-origin: right;
+
+  background: var(--color-brand);
+
+  transition: transform var(--transition);
+}
+
+.nav-link:hover {
+  color: #e2e8f0;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.mobile-menu {
+  animation: mobileMenuIn 180ms ease-out;
+}
+
+@keyframes mobileMenuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-nav-link {
+  display: block;
+
+  border-radius: 0.75rem;
+
+  padding: 0.8rem 0.9rem;
+
+  color: #94a3b8;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  transition:
+    color var(--transition),
+    background-color var(--transition);
+}
+
+.mobile-nav-link:hover {
+  color: #ffffff;
+  background: rgba(56, 207, 255, 0.08);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.text-gradient {
+  background: linear-gradient(110deg, #ffffff 5%, #7ddfff 45%, #0ea5e9 85%);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.terminal-card {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.02),
+    0 35px 80px rgba(0, 0, 0, 0.35);
+}
+
+.terminal-card::before {
+  position: absolute;
+  content: "";
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(56, 207, 255, 0.65),
+    transparent
+  );
+}
+
+/* =========================================================
+   SEÇÕES
+========================================================= */
+
+.section-spacing {
+  position: relative;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.section-heading {
+  max-width: 780px;
+  margin-bottom: 3rem;
+}
+
+.section-kicker {
+  display: inline-block;
+
+  color: var(--color-brand);
+
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+
+  font-size: 0.65rem;
+  font-weight: 700;
+
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin-top: 0.8rem;
+
+  color: #ffffff;
+
+  font-size: clamp(2rem, 5vw, 3.5rem);
+
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.section-description {
+  margin-top: 1.2rem;
+
+  max-width: 650px;
+
+  color: #64748b;
+
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   GLASSMORPHISM
+========================================================= */
+
+.glass-card {
+  border: 1px solid var(--border);
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.045),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.025),
+    0 20px 50px rgba(0, 0, 0, 0.12);
+
+  backdrop-filter: blur(16px);
+
+  transition:
+    border-color var(--transition),
+    background-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.glass-card:hover {
+  border-color: rgba(56, 207, 255, 0.18);
+
+  background: linear-gradient(
+    145deg,
+    rgba(56, 207, 255, 0.055),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 24px 60px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================================================
+   SOCIAL CHIPS
+========================================================= */
+
+.social-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  min-height: 38px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+
+  padding: 0.55rem 0.8rem;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #94a3b8;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  transition:
+    color var(--transition),
+    border-color var(--transition),
+    background-color var(--transition),
+    transform var(--transition);
+}
+
+.social-chip:hover {
+  color: #ffffff;
+
+  border-color: rgba(56, 207, 255, 0.3);
+
+  background: rgba(56, 207, 255, 0.07);
+
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   MINI INFO CARDS
+========================================================= */
+
+.info-mini-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  border-radius: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  padding: 0.9rem 1rem;
+
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.info-mini-label {
+  color: #475569;
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 0.6rem;
+
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.info-mini-value {
+  color: #cbd5e1;
+
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   FEATURE ICONS
+========================================================= */
+
+.feature-icon {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid rgba(56, 207, 255, 0.18);
+  border-radius: 0.8rem;
+
+  background: rgba(56, 207, 255, 0.07);
+
+  color: var(--color-brand);
+}
+
+/* =========================================================
+   TECNOLOGIAS
+========================================================= */
+
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+
+  padding: 0.55rem 0.8rem;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #94a3b8;
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 0.68rem;
+
+  transition:
+    color var(--transition),
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+.tech-badge:hover {
+  color: #ffffff;
+
+  border-color: rgba(56, 207, 255, 0.25);
+
+  background: rgba(56, 207, 255, 0.06);
+}
+
+.tech-primary {
+  border-color: rgba(56, 207, 255, 0.16);
+  color: #bae6fd;
+  background: rgba(14, 165, 233, 0.055);
+}
+
+/* =========================================================
+   PROJETOS
+========================================================= */
+
+.filter-button {
+  min-height: 40px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+
+  padding: 0.55rem 0.95rem;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #64748b;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  transition:
+    color var(--transition),
+    border-color var(--transition),
+    background-color var(--transition),
+    transform var(--transition);
+}
+
+.filter-button:hover {
+  color: #e2e8f0;
+  border-color: rgba(56, 207, 255, 0.2);
+}
+
+.filter-button.is-active {
+  color: #ffffff;
+
+  border-color: rgba(56, 207, 255, 0.35);
+
+  background: rgba(14, 165, 233, 0.13);
+
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.08);
+}
+
+.project-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 420px;
+}
+
+.project-card.is-hidden {
+  display: none;
+}
+
+.project-number {
+  display: inline-flex;
+
+  color: #334155;
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.status-badge {
+  display: inline-flex;
+
+  border-radius: 999px;
+
+  padding: 0.35rem 0.6rem;
+
+  font-size: 0.58rem;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.status-progress {
+  color: #bae6fd;
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.18);
+}
+
+.status-complete {
+  color: #a7f3d0;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.status-private {
+  color: #cbd5e1;
+  background: rgba(148, 163, 184, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.project-tech {
+  display: inline-flex;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+
+  padding: 0.35rem 0.55rem;
+
+  color: #64748b;
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 0.58rem;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  color: #7ddfff;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  transition:
+    color var(--transition),
+    gap var(--transition);
+}
+
+.project-link:hover {
+  color: #ffffff;
+  gap: 0.55rem;
+}
+
+/* =========================================================
+   FORMAÇÃO
+========================================================= */
+
+.education-chip {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+
+  padding: 0.75rem;
+
+  background: rgba(255, 255, 255, 0.02);
+
+  color: #94a3b8;
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 0.65rem;
+
+  text-align: center;
+}
+
+/* =========================================================
+   HABILIDADES
+========================================================= */
+
+.skill-card {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  min-height: 58px;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.9rem;
+
+  padding: 0.8rem 1rem;
+
+  background: rgba(255, 255, 255, 0.02);
+
+  color: #cbd5e1;
+
+  font-size: 0.78rem;
+  line-height: 1.4;
+
+  transition:
+    border-color var(--transition),
+    background-color var(--transition),
+    transform var(--transition);
+}
+
+.skill-card:hover {
+  border-color: rgba(56, 207, 255, 0.18);
+  background: rgba(56, 207, 255, 0.04);
+  transform: translateX(3px);
+}
+
+.skill-dot {
+  flex: 0 0 auto;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 999px;
+
+  background: var(--color-brand);
+
+  box-shadow: 0 0 10px rgba(56, 207, 255, 0.7);
+}
+
+/* =========================================================
+   CONTATO
+========================================================= */
+
+.contact-panel {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 30px 80px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer-link {
+  color: #475569;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  transition: color var(--transition);
+}
+
+.footer-link:hover {
+  color: #7ddfff;
+}
+
+/* =========================================================
+   ANIMAÇÕES DE SCROLL
+========================================================= */
+
+.reveal {
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* Pequeno atraso para elementos sequenciais */
+
+.reveal:nth-child(2) {
+  transition-delay: 80ms;
+}
+
+.reveal:nth-child(3) {
+  transition-delay: 140ms;
+}
+
+.reveal:nth-child(4) {
+  transition-delay: 200ms;
+}
+
+.reveal:nth-child(5) {
+  transition-delay: 260ms;
+}
+
+.reveal:nth-child(6) {
+  transition-delay: 320ms;
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+
+@media (max-width: 767px) {
+  .section-spacing {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .section-heading {
+    margin-bottom: 2rem;
+  }
+
+  .background-grid {
+    background-size: 38px 38px;
+  }
+
+  .background-glow {
+    width: 300px;
+    height: 300px;
+    filter: blur(90px);
+  }
+
+  .project-card {
+    min-height: auto;
+  }
+}
+
+/* =========================================================
+   REDUÇÃO DE MOVIMENTO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print {
+  .site-background,
+  #site-header,
+  .filter-button,
+  .contact-panel {
+    display: none !important;
+  }
+
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  .glass-card {
+    color: #000;
+    border: 1px solid #ddd;
+    background: #fff;
+    box-shadow: none;
+  }
+}

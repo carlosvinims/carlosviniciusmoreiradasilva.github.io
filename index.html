@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Portfólio profissional de Carlos Vinicius, Desenvolvedor Web PHP Júnior em formação, com foco em PHP, Laravel e desenvolvimento de aplicações web.">
+
+    <meta name="author" content="Carlos Vinicius Moreira da Silva">
+
+    <meta name="theme-color" content="#05070b">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+
+    <meta property="og:title" content="Carlos Vinicius | Desenvolvedor Web PHP Júnior">
+
+    <meta property="og:description"
+        content="Portfólio de Carlos Vinicius, estudante de Desenvolvimento de Sistemas e Desenvolvedor Web em formação com foco em PHP e Laravel.">
+
+    <meta property="og:image" content="assets/imagens/perfil.jpg">
+
+    <meta property="og:locale" content="pt_BR">
+
+    <title>
+        Carlos Vinicius | Desenvolvedor Web PHP Júnior
+    </title>
+
+    <!-- Favicon SVG embutido para não exigir arquivo adicional -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305070b'/%3E%3Cpath d='M18 20h28M18 32h18M18 44h24' stroke='%2338bdf8' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#effaff',
+                            100: '#dff6ff',
+                            200: '#b9edff',
+                            300: '#7ddfff',
+                            400: '#38cfff',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e'
+                        }
+                    },
+                    fontFamily: {
+                        sans: [
+                            'Inter',
+                            'ui-sans-serif',
+                            'system-ui',
+                            'sans-serif'
+                        ],
+                        mono: [
+                            'JetBrains Mono',
+                            'ui-monospace',
+                            'SFMono-Regular',
+                            'monospace'
+                        ]
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- CSS complementar -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="bg-[#05070b] text-slate-100 antialiased">
+
+    <!-- Background decorativo -->
+    <div class="site-background" aria-hidden="true">
+        <div class="background-grid"></div>
+        <div class="background-glow background-glow-one"></div>
+        <div class="background-glow background-glow-two"></div>
+    </div>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header id="site-header"
+        class="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-[#05070b]/75 backdrop-blur-xl">
+
+        <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8"
+            aria-label="Navegação principal">
+
+            <!-- Logo -->
+            <a href="#inicio" class="group flex items-center gap-3" aria-label="Ir para o início">
+                <span
+                    class="flex h-10 w-10 items-center justify-center rounded-xl border border-brand-400/30 bg-brand-400/10 font-mono text-sm font-bold text-brand-300 shadow-[0_0_25px_rgba(14,165,233,0.12)]">
+                    CV
+                </span>
+
+                <span class="hidden sm:block">
+                    <span class="block text-sm font-semibold text-white">
+                        Carlos Vinicius
+                    </span>
+
+                    <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">
+                        web developer
+                    </span>
+                </span>
+            </a>
+
+            <!-- Navegação desktop -->
+            <div class="hidden items-center gap-7 md:flex">
+                <a href="#sobre" class="nav-link">
+                    Sobre
+                </a>
+
+                <a href="#stack" class="nav-link">
+                    Stack
+                </a>
+
+                <a href="#projetos" class="nav-link">
+                    Projetos
+                </a>
+
+                <a href="#formacao" class="nav-link">
+                    Formação
+                </a>
+
+                <a href="#contato" class="nav-link">
+                    Contato
+                </a>
+            </div>
+
+            <!-- CTA desktop -->
+            <a href="mailto:carlos.vinicius582@gmail.com"
+                class="hidden rounded-xl border border-brand-400/40 bg-brand-400/10 px-4 py-2.5 text-sm font-semibold text-brand-200 transition duration-300 hover:border-brand-300/70 hover:bg-brand-400/20 hover:text-white md:inline-flex">
+                Vamos conversar
+            </a>
+
+            <!-- Botão mobile -->
+            <button id="mobile-menu-button" type="button"
+                class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 transition hover:border-brand-400/40 hover:bg-brand-400/10 md:hidden"
+                aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+
+                <svg id="menu-open-icon" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" aria-hidden="true">
+                    <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+
+                <svg id="menu-close-icon" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" aria-hidden="true">
+                    <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Menu mobile -->
+        <div id="mobile-menu"
+            class="mobile-menu hidden border-t border-white/5 bg-[#05070b]/95 px-5 pb-5 pt-3 backdrop-blur-xl md:hidden">
+
+            <div class="flex flex-col gap-1">
+
+                <a href="#sobre" class="mobile-nav-link">
+                    Sobre
+                </a>
+
+                <a href="#stack" class="mobile-nav-link">
+                    Stack
+                </a>
+
+                <a href="#projetos" class="mobile-nav-link">
+                    Projetos
+                </a>
+
+                <a href="#formacao" class="mobile-nav-link">
+                    Formação
+                </a>
+
+                <a href="#experiencia" class="mobile-nav-link">
+                    Experiência
+                </a>
+
+                <a href="#contato" class="mobile-nav-link">
+                    Contato
+                </a>
+
+                <a href="mailto:carlos.vinicius582@gmail.com"
+                    class="mt-3 inline-flex items-center justify-center rounded-xl bg-brand-500 px-4 py-3 text-sm font-semibold text-white">
+                    Entrar em contato
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- =========================
+             HERO
+        ========================== -->
+        <section id="inicio" class="relative flex min-h-screen items-center overflow-hidden pt-28">
+
+            <div
+                class="mx-auto grid w-full max-w-7xl gap-14 px-5 py-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:px-8 lg:py-24">
+
+                <!-- Conteúdo principal -->
+                <div class="reveal" data-reveal>
+
+                    <div
+                        class="mb-7 inline-flex items-center gap-3 rounded-full border border-brand-400/20 bg-brand-400/5 px-4 py-2 font-mono text-xs text-brand-200">
+
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-400 opacity-60"></span>
+                            <span class="relative inline-flex h-2 w-2 rounded-full bg-brand-400"></span>
+                        </span>
+
+                        Disponível para primeira oportunidade
+                    </div>
+
+                    <p class="mb-4 font-mono text-sm tracking-[0.2em] text-brand-400">
+                        &lt; hello_world /&gt;
+                    </p>
+
+                    <h1
+                        class="max-w-4xl text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-7xl">
+
+                        Carlos
+                        <span class="text-gradient">
+                            Vinicius.
+                        </span>
+
+                    </h1>
+
+                    <h2 class="mt-5 max-w-2xl text-xl font-medium leading-relaxed text-slate-300 sm:text-2xl">
+
+                        Desenvolvedor Web
+                        <span class="text-brand-300">
+                            PHP Júnior
+                        </span>
+                        em formação.
+
+                    </h2>
+
+                    <p class="mt-6 max-w-2xl text-base leading-7 text-slate-400 sm:text-lg">
+
+                        Estudante de Desenvolvimento de Sistemas e Desenvolvedor Web em formação, com foco em PHP,
+                        Laravel e desenvolvimento de aplicações web.
+
+                    </p>
+
+                    <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+
+                        <a href="#projetos"
+                            class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-500 px-6 py-3 text-sm font-bold text-white shadow-[0_0_35px_rgba(14,165,233,0.22)] transition duration-300 hover:-translate-y-0.5 hover:bg-brand-400">
+
+                            Explorar projetos
+
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                aria-hidden="true">
+
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+
+                            </svg>
+                        </a>
+
+                        <a href="mailto:carlos.vinicius582@gmail.com"
+                            class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-slate-200 transition duration-300 hover:-translate-y-0.5 hover:border-brand-400/40 hover:bg-brand-400/10 hover:text-white">
+
+                            Entrar em contato
+
+                        </a>
+                    </div>
+
+                    <!-- Links rápidos -->
+                    <div class="mt-9 flex flex-wrap items-center gap-3">
+
+                        <a href="https://github.com/carlosvinims" target="_blank" rel="noopener noreferrer"
+                            class="social-chip" aria-label="GitHub de Carlos Vinicius">
+
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+
+                                <path
+                                    d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.42-4.04-1.42-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.74.08-.74 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.29-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.13 3.17.76.84 1.22 1.91 1.22 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z" />
+
+                            </svg>
+
+                            GitHub
+                        </a>
+
+                        <a href="https://linkedin.com/in/carlosvinims" target="_blank" rel="noopener noreferrer"
+                            class="social-chip" aria-label="LinkedIn de Carlos Vinicius">
+
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+
+                                <path
+                                    d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.67H9.34V8.98h3.41v1.57h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM3.54 20.45h3.57V8.98H3.54v11.47ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z" />
+
+                            </svg>
+
+                            LinkedIn
+                        </a>
+
+                        <span class="social-chip cursor-default">
+
+                            <svg class="h-4 w-4 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.7" aria-hidden="true">
+
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Z" />
+
+                                <circle cx="12" cy="9" r="2.5" />
+
+                            </svg>
+
+                            Quatis, RJ
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Terminal / visual -->
+                <div class="reveal relative" data-reveal>
+
+                    <div class="absolute -inset-6 rounded-[2rem] bg-brand-500/10 blur-3xl"></div>
+
+                    <div
+                        class="terminal-card relative overflow-hidden rounded-2xl border border-white/10 bg-[#090d14]/90 shadow-2xl shadow-black/40">
+
+                        <div class="flex items-center justify-between border-b border-white/10 px-5 py-4">
+
+                            <div class="flex items-center gap-2">
+                                <span class="h-3 w-3 rounded-full bg-red-400/80"></span>
+                                <span class="h-3 w-3 rounded-full bg-yellow-400/80"></span>
+                                <span class="h-3 w-3 rounded-full bg-green-400/80"></span>
+                            </div>
+
+                            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-600">
+                                carlos@portfolio
+                            </span>
+                        </div>
+
+                        <div class="p-6 sm:p-8">
+
+                            <div class="mb-7 font-mono text-xs leading-7 text-slate-500">
+                                <span class="text-brand-400">$</span>
+                                whoami
+                            </div>
+
+                            <div class="space-y-4 font-mono text-sm">
+
+                                <p>
+                                    <span class="text-slate-500">name:</span>
+                                    <span class="text-white">
+                                        "Carlos Vinicius"
+                                    </span>
+                                </p>
+
+                                <p>
+                                    <span class="text-slate-500">role:</span>
+                                    <span class="text-brand-300">
+                                        "PHP Junior Developer"
+                                    </span>
+                                </p>
+
+                                <p>
+                                    <span class="text-slate-500">focus:</span>
+                                    <span class="text-white">
+                                        ["PHP", "Laravel", "Web"]
+                                    </span>
+                                </p>
+
+                                <p>
+                                    <span class="text-slate-500">education:</span>
+                                    <span class="text-white">
+                                        "SENAI Resende"
+                                    </span>
+                                </p>
+
+                                <p>
+                                    <span class="text-slate-500">status:</span>
+                                    <span class="text-green-400">
+                                        "learning_and_building"
+                                    </span>
+                                </p>
+
+                            </div>
+
+                            <div class="mt-8 border-t border-white/5 pt-6">
+
+                                <div class="mb-2 flex items-center justify-between">
+
+                                    <span class="font-mono text-xs text-slate-500">
+                                        current_stack
+                                    </span>
+
+                                    <span class="font-mono text-xs text-brand-400">
+                                        PHP / Laravel
+                                    </span>
+
+                                </div>
+
+                                <div class="h-1.5 overflow-hidden rounded-full bg-white/5">
+
+                                    <div class="h-full w-3/4 rounded-full bg-gradient-to-r from-brand-600 to-brand-300">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pequenos elementos decorativos -->
+                    <div
+                        class="absolute -right-3 -top-5 hidden rounded-xl border border-brand-400/20 bg-[#0a111b]/90 px-4 py-3 font-mono text-xs text-brand-300 shadow-xl sm:block">
+                        MVC
+                    </div>
+
+                    <div
+                        class="absolute -bottom-5 -left-4 hidden rounded-xl border border-white/10 bg-[#0a111b]/90 px-4 py-3 font-mono text-xs text-slate-400 shadow-xl sm:block">
+                        Git + GitHub
+                    </div>
+                </div>
+            </div>
+
+            <!-- Indicador de scroll -->
+            <a href="#sobre"
+                class="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-slate-600 transition hover:text-brand-400 md:flex"
+                aria-label="Ir para a seção Sobre">
+
+                <span class="font-mono text-[9px] uppercase tracking-[0.3em]">
+                    scroll
+                </span>
+
+                <span class="h-10 w-px bg-gradient-to-b from-brand-400/70 to-transparent"></span>
+
+            </a>
+        </section>
+
+        <!-- =========================
+             SOBRE
+        ========================== -->
+        <section id="sobre" class="section-spacing">
+
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+
+                <div class="section-heading reveal" data-reveal>
+
+                    <span class="section-kicker">
+                        01 / sobre
+                    </span>
+
+                    <h2 class="section-title">
+
+                        Construindo minha
+
+                        <span class="text-gradient">
+                            base em tecnologia.
+                        </span>
+
+                    </h2>
+
+                    <p class="section-description">
+                        Uma formação prática voltada para desenvolvimento web, lógica, bancos de dados e arquitetura de
+                        sistemas.
+                    </p>
+                </div>
+
+                <div class="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+
+                    <!-- Foto -->
+                    <div class="reveal" data-reveal>
+
+                        <div class="glass-card relative h-full min-h-[360px] overflow-hidden rounded-2xl p-2">
+
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-brand-500/10 via-transparent to-transparent">
+                            </div>
+
+                            <div
+                                class="relative flex h-full min-h-[350px] items-center justify-center overflow-hidden rounded-xl border border-white/5 bg-[#080b11]">
+
+                                <!-- CAMINHO DA FOTO CORRIGIDO -->
+                                <img src="assets/imagens/perfil.jpg" alt="Foto de perfil de Carlos Vinicius"
+                                    class="h-full w-full object-cover"
+                                    onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+
+                                <!-- Placeholder caso perfil.jpg ainda não exista -->
+                                <div
+                                    class="hidden absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+
+                                    <div
+                                        class="mb-5 flex h-20 w-20 items-center justify-center rounded-2xl border border-brand-400/30 bg-brand-400/10 font-mono text-2xl font-bold text-brand-300">
+                                        CV
+                                    </div>
+
+                                    <p class="font-mono text-xs uppercase tracking-[0.2em] text-slate-500">
+                                        assets/images/perfil.jpg
+                                    </p>
+
+                                    <p class="mt-2 max-w-xs text-sm text-slate-600">
+                                        Insira sua foto neste caminho para substituir o placeholder.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Texto -->
+                    <div class="reveal" data-reveal>
+
+                        <div class="glass-card rounded-2xl p-6 sm:p-8">
+
+                            <div class="flex items-center gap-3">
+
+                                <span class="h-2 w-2 rounded-full bg-brand-400 shadow-[0_0_12px_rgba(56,207,255,0.8)]">
+                                </span>
+
+                                <span class="font-mono text-xs uppercase tracking-[0.2em] text-slate-500">
+                                    perfil.profissional
+                                </span>
+
+                            </div>
+
+                            <p class="mt-6 text-base leading-8 text-slate-300">
+
+                                Sou estudante de Desenvolvimento de Sistemas na
+
+                                <strong class="font-semibold text-white">
+                                    Firjan SENAI Resende
+                                </strong>
+
+                                e venho construindo minha formação prática em desenvolvimento web, com foco
+                                principalmente no ecossistema PHP e Laravel.
+
+                            </p>
+
+                            <p class="mt-5 text-base leading-8 text-slate-400">
+
+                                Minha stack principal inclui PHP, Laravel, Blade, JavaScript, HTML5, CSS3, Bootstrap,
+                                MySQL e Git/GitHub. Ao longo dos estudos, venho desenvolvendo aplicações web, sistemas
+                                CRUD, projetos utilizando banco de dados, integração e consumo de APIs, interfaces
+                                responsivas e aplicações estruturadas utilizando conceitos de MVC.
+
+                            </p>
+
+                            <p class="mt-5 text-base leading-8 text-slate-400">
+
+                                Também possuo conhecimentos em modelagem de dados, lógica de programação, algoritmos e
+                                conceitos de arquitetura de software, tendo estudado padrões como MVC e MVP. Tenho
+                                experiência prática com recursos do Laravel como migrations, seeders, Eloquent, rotas,
+                                controllers, views Blade e Artisan.
+
+                            </p>
+
+                            <div class="mt-7 grid gap-3 sm:grid-cols-2">
+
+                                <div class="info-mini-card">
+                                    <span class="info-mini-label">
+                                        Localização
+                                    </span>
+
+                                    <span class="info-mini-value">
+                                        Quatis, Rio de Janeiro
+                                    </span>
+                                </div>
+
+                                <div class="info-mini-card">
+                                    <span class="info-mini-label">
+                                        Objetivo
+                                    </span>
+
+                                    <span class="info-mini-value">
+                                        PHP/Laravel Júnior ou Estágio
+                                    </span>
+                                </div>
+
+                                <div class="info-mini-card">
+                                    <span class="info-mini-label">
+                                        Formação
+                                    </span>
+
+                                    <span class="info-mini-value">
+                                        Técnico em Desenvolvimento de Sistemas
+                                    </span>
+                                </div>
+
+                                <div class="info-mini-card">
+                                    <span class="info-mini-label">
+                                        Status
+                                    </span>
+
+                                    <span class="info-mini-value text-brand-300">
+                                        Em formação
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             STACK
+        ========================== -->
+        <section id="stack" class="section-spacing border-y border-white/5 bg-white/[0.015]">
+
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+
+                <div class="section-heading reveal" data-reveal>
+
+                    <span class="section-kicker">
+                        02 / stack
+                    </span>
+
+                    <h2 class="section-title">
+
+                        Tecnologias que estou
+
+                        <span class="text-gradient">
+                            desenvolvendo.
+                        </span>
+
+                    </h2>
+
+                    <p class="section-description">
+                        Conhecimentos apresentados de forma transparente, sem classificações artificiais de senioridade.
+                    </p>
+
+                </div>
+
+                <div class="grid gap-6 lg:grid-cols-2">
+
+                    <!-- Principais -->
+                    <div class="glass-card reveal rounded-2xl p-6 sm:p-8" data-reveal>
+
+                        <div class="mb-7 flex items-center justify-between">
+
+                            <div>
+
+                                <span class="section-kicker">
+                                    core
+                                </span>
+
+                                <h3 class="mt-2 text-xl font-bold text-white">
+                                    Conhecimentos principais
+                                </h3>
+
+                            </div>
+
+                            <span class="font-mono text-xs text-brand-400">
+                                01
+                            </span>
+
+                        </div>
+
+                        <div class="flex flex-wrap gap-3">
+
+                            <span class="tech-badge tech-primary">PHP</span>
+                            <span class="tech-badge tech-primary">Laravel</span>
+                            <span class="tech-badge tech-primary">JavaScript</span>
+                            <span class="tech-badge tech-primary">MySQL</span>
+                            <span class="tech-badge tech-primary">HTML5</span>
+                            <span class="tech-badge tech-primary">CSS3</span>
+                            <span class="tech-badge tech-primary">Bootstrap</span>
+                            <span class="tech-badge tech-primary">Git / GitHub</span>
+
+                        </div>
+                    </div>
+
+                    <!-- Complementares -->
+                    <div class="glass-card reveal rounded-2xl p-6 sm:p-8" data-reveal>
+
+                        <div class="mb-7 flex items-center justify-between">
+
+                            <div>
+
+                                <span class="section-kicker">
+                                    complementary
+                                </span>
+
+                                <h3 class="mt-2 text-xl font-bold text-white">
+                                    Conhecimentos complementares
+                                </h3>
+
+                            </div>
+
+                            <span class="font-mono text-xs text-brand-400">
+                                02
+                            </span>
+
+                        </div>
+
+                        <div class="flex flex-wrap gap-3">
+
+                            <span class="tech-badge">SQLite</span>
+                            <span class="tech-badge">Composer</span>
+                            <span class="tech-badge">NPM</span>
+                            <span class="tech-badge">Vite</span>
+                            <span class="tech-badge">MVC</span>
+                            <span class="tech-badge">MVP</span>
+                            <span class="tech-badge">DER</span>
+                            <span class="tech-badge">Eloquent ORM</span>
+                            <span class="tech-badge">Migrations</span>
+                            <span class="tech-badge">Seeders</span>
+                            <span class="tech-badge">APIs</span>
+                            <span class="tech-badge">CRUD</span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Competências -->
+                <div class="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+
+                    <div class="glass-card reveal rounded-2xl p-6" data-reveal>
+
+                        <div class="feature-icon">
+
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.7" aria-hidden="true">
+
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m8 9 3-3 3 3m-6 6 3 3 3-3M5 12h14" />
+
+                            </svg>
+
+                        </div>
+
+                        <h3 class="mt-5 font-bold text-white">
+                            Desenvolvimento Web
+                        </h3>
+
+                        <p class="mt-2 text-sm leading-6 text-slate-500">
+                            Estruturação de aplicações web, interfaces responsivas e organização de código.
+                        </p>
+
+                    </div>
+
+                    <div class="glass-card reveal rounded-2xl p-6" data-reveal>
+
+                        <div class="feature-icon">
+
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.7" aria-hidden="true">
+
+                                <ellipse cx="12" cy="5" rx="7" ry="3" />
+
+                                <path stroke-linecap="round"
+                                    d="M5 5v7c0 1.66 3.13 3 7 3s7-1.34 7-3V5M5 12v7c0 1.66 3.13 3 7 3s7-1.34 7-3v-7" />
+
+                            </svg>
+
+                        </div>
+
+                        <h3 class="mt-5 font-bold text-white">
+                            Dados & CRUD
+                        </h3>
+
+                        <p class="mt-2 text-sm leading-6 text-slate-500">
+                            Modelagem de dados, bancos relacionais, migrations, seeders e operações CRUD.
+                        </p>
+
+                    </div>
+
+                    <div class="glass-card reveal rounded-2xl p-6" data-reveal>
+
+                        <div class="feature-icon">
+
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.7" aria-hidden="true">
+
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14" />
+
+                            </svg>
+
+                        </div>
+
+                        <h3 class="mt-5 font-bold text-white">
+                            Arquitetura
+                        </h3>
+
+                        <p class="mt-2 text-sm leading-6 text-slate-500">
+                            Prática com MVC, conceitos de MVP e organização de responsabilidades em aplicações.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PROJETOS
+        ========================== -->
+        <section id="projetos" class="section-spacing">
+
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+
+                <div class="section-heading reveal" data-reveal>
+
+                    <span class="section-kicker">
+                        03 / projetos
+                    </span>
+
+                    <h2 class="section-title">
+
+                        Onde a teoria vira
+
+                        <span class="text-gradient">
+                            prática.
+                        </span>
+
+                    </h2>
+
+                    <p class="section-description">
+
+                        Projetos acadêmicos e próprios que mostram minha evolução em desenvolvimento web, PHP, Laravel,
+                        bancos de dados e JavaScript.
+
+                    </p>
+                </div>
+
+                <!-- Filtros -->
+                <div class="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filtrar projetos">
+
+                    <button type="button" class="filter-button is-active" data-filter="all">
+                        Todos
+                    </button>
+
+                    <button type="button" class="filter-button" data-filter="laravel">
+                        Laravel
+                    </button>
+
+                    <button type="button" class="filter-button" data-filter="php">
+                        PHP
+                    </button>
+
+                    <button type="button" class="filter-button" data-filter="javascript">
+                        JavaScript
+                    </button>
+
+                </div>
+
+                <!-- Grid de projetos: 2 colunas com mais espaço -->
+                <div id="projects-grid" class="grid gap-8 md:grid-cols-2">
+
+                    <!-- Finance Control -->
+                    <article class="project-card glass-card reveal rounded-2xl p-6" data-project data-category="laravel"
+                        data-reveal>
+
+                        <div class="flex items-start justify-between gap-4">
+
+                            <span class="project-number">
+                                01
+                            </span>
+
+                            <span class="status-badge status-progress">
+                                Em desenvolvimento
+                            </span>
+
+                        </div>
+
+                        <div class="mt-7">
+
+                            <span class="font-mono text-xs text-brand-400">
+                                Laravel / MVC
+                            </span>
+
+                            <h3 class="mt-2 text-xl font-bold text-white">
+                                Finance Control
+                            </h3>
+
+                            <p class="mt-3 text-sm leading-6 text-slate-400">
+
+                                Aplicação de controle financeiro voltada ao gerenciamento e organização de informações
+                                financeiras, utilizando a estrutura MVC do Laravel e integração com banco de dados.
+
+                            </p>
+                        </div>
+
+                        <div class="mt-6 flex flex-wrap gap-2">
+
+                            <span class="project-tech">PHP</span>
+                            <span class="project-tech">Laravel</span>
+                            <span class="project-tech">Blade</span>
+                            <span class="project-tech">MySQL / SQLite</span>
+                            <span class="project-tech">Vite</span>
+
+                        </div>
+
+                        <div class="mt-7 flex items-center justify-between border-t border-white/5 pt-5">
+
+                            <span class="text-xs text-slate-600">
+                                Estudo
+                            </span>
+
+                            <a href="https://github.com/carlosvinims/finance-control" target="_blank"
+                                rel="noopener noreferrer" class="project-link"
+                                aria-label="Ver Finance Control no GitHub">
+
+                                GitHub
+                                <span aria-hidden="true">↗</span>
+
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Catálogo -->
+                    <article class="project-card glass-card reveal rounded-2xl p-6" data-project data-category="laravel"
+                        data-reveal>
+
+                        <div class="flex items-start justify-between gap-4">
+
+                            <span class="project-number">
+                                02
+                            </span>
+
+                            <span class="status-badge status-complete">
+                                Concluído
+                            </span>
+
+                        </div>
+
+                        <div class="mt-7">
+
+                            <span class="font-mono text-xs text-brand-400">
+                                Laravel / CRUD
+                            </span>
+
+                            <h3 class="mt-2 text-xl font-bold text-white">
+                                Catálogo de Produtos
+                            </h3>
+
+                            <p class="mt-3 text-sm leading-6 text-slate-400">
+
+                                Aplicação web para gerenciamento e apresentação de produtos, praticando CRUD,
+                                organização de dados e arquitetura padrão do Laravel.
+
+                            </p>
+
+                        </div>
+
+                        <div class="mt-6 flex flex-wrap gap-2">
+
+                            <span class="project-tech">PHP</span>
+                            <span class="project-tech">Laravel</span>
+                            <span class="project-tech">Blade</span>
+                            <span class="project-tech">MySQL</span>
+                            <span class="project-tech">Vite</span>
+
+                        </div>
+
+                        <div class="mt-7 flex items-center justify-between border-t border-white/5 pt-5">
+
+                            <span class="text-xs text-slate-600">
+                                Estudo
+                            </span>
+
+                            <a href="https://github.com/carlosvinims/catalogo-produtos_laravel" target="_blank"
+                                rel="noopener noreferrer" class="project-link"
+                                aria-label="Ver Catálogo de Produtos no GitHub">
+
+                                GitHub
+                                <span aria-hidden="true">↗</span>
+
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Clínica -->
+                    <article class="project-card glass-card reveal rounded-2xl p-6" data-project data-category="laravel"
+                        data-reveal>
+
+                        <div class="flex items-start justify-between gap-4">
+
+                            <span class="project-number">
+                                03
+                            </span>
+
+                            <span class="status-badge status-private">
+                                Repositório privado
+                            </span>
+
+                        </div>
+
+                        <div class="mt-7">
+
+                            <span class="font-mono text-xs text-brand-400">
+                                Laravel / Eloquent
+                            </span>
+
+                            <h3 class="mt-2 text-xl font-bold text-white">
+                                Clínica Veterinária
+                            </h3>
+
+                            <p class="mt-3 text-sm leading-6 text-slate-400">
+
+                                Sistema web desenvolvido durante os estudos de Laravel, com foco em organização e
+                                gerenciamento de informações de uma clínica veterinária.
+
+                            </p>
+                        </div>
+
+                        <div class="mt-6 flex flex-wrap gap-2">
+
+                            <span class="project-tech">PHP</span>
+                            <span class="project-tech">Laravel</span>
+                            <span class="project-tech">MySQL</span>
+                            <span class="project-tech">Eloquent</span>
+                            <span class="project-tech">Migrations</span>
+                            <span class="project-tech">Seeders</span>
+
+                        </div>
+
+                        <div class="mt-7 flex items-center justify-between border-t border-white/5 pt-5">
+
+                            <span class="text-xs text-slate-600">
+                                Estudo
+                            </span>
+
+                            <span class="text-xs text-slate-600">
+                                Sem link público
+                            </span>
+
+                        </div>
+                    </article>
+
+                    <!-- Monitor -->
+                    <article class="project-card glass-card reveal rounded-2xl p-6" data-project data-category="laravel"
+                        data-reveal>
+
+                        <div class="flex items-start justify-between gap-4">
+
+                            <span class="project-number">
+                                04
+                            </span>
+
+                            <span class="status-badge status-progress">
+                                Em desenvolvimento
+                            </span>
+
+                        </div>
+
+                        <div class="mt-7">
+
+                            <span class="font-mono text-xs text-brand-400">
+                                Laravel / Dados
+                            </span>
+
+                            <h3 class="mt-2 text-xl font-bold text-white">
+                                Monitor de Cotações
+                            </h3>
+
+                            <p class="mt-3 text-sm leading-6 text-slate-400">
+
+                                Aplicação de estudo para praticar desenvolvimento com PHP e Laravel, explorando
+                                estrutura MVC, rotas, controllers, views e integração com dados.
+
+                            </p>
+
+                        </div>
+
+                        <div class="mt-6 flex flex-wrap gap-2">
+
+                            <span class="project-tech">PHP</span>
+                            <span class="project-tech">Laravel</span>
+                            <span class="project-tech">Blade</span>
+                            <span class="project-tech">Composer</span>
+                            <span class="project-tech">Vite</span>
+
+                        </div>
+
+                        <div class="mt-7 flex items-center justify-between border-t border-white/5 pt-5">
+
+                            <span class="text-xs text-slate-600">
+                                Estudo
+                            </span>
+
+                            <a href="https://github.com/carlosvinims/monitor-cotacoes-laravel-" target="_blank"
+                                rel="noopener noreferrer" class="project-link"
+                                aria-label="Ver Monitor de Cotações no GitHub">
+
+                                GitHub
+                                <span aria-hidden="true">↗</span>
+
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Loja -->
+                    <article class="project-card glass-card reveal rounded-2xl p-6" data-project data-category="php"
+                        data-reveal>
+
+                        <div class="flex items-start justify-between gap-4">
+
+                            <span class="project-number">
+                                05
+                            </span>
+
+                            <span class="status-badge status-complete">
+                                Concluído
+                            </span>
+
+                        </div>
+
+                        <div class="mt-7">
+
+                            <span class="font-mono text-xs text-brand-400">
+                                PHP / Front-end
+                            </span>
+
+                            <h3 class="mt-2 text-xl font-bold text-white">
+                                Loja de Cards
+                            </h3>
+
+                            <p class="mt-3 text-sm leading-6 text-slate-400">
+
+                                Mini aplicação web em PHP para simular uma loja de cartas, praticando organização de
+                                dados e integração entre lógica da aplicação e interface.
+
+                            </p>
+
+                        </div>
+
+                        <div class="mt-6 flex flex-wrap gap-2">
+
+                            <span class="project-tech">PHP</span>
+                            <span class="project-tech">HTML</span>
+                            <span class="project-tech">CSS</span>
+                            <span class="project-tech">JavaScript</span>
+
+                        </div>
+
+                        <div class="mt-7 flex items-center justify-between border-t border-white/5 pt-5">
+
+                            <span class="text-xs text-slate-600">
+                                Estudo
+                            </span>
+
+                            <a href="https://github.com/carlosvinims/loja-de-cards" target="_blank"
+                                rel="noopener noreferrer" class="project-link" aria-label="Ver Loja de Cards no GitHub">
+
+                                GitHub
+                                <span aria-hidden="true">↗</span>
+
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- GitHub Stalker -->
+                    <article class="project-card glass-card reveal rounded-2xl p-6" data-project
+                        data-category="javascript" data-reveal>
+
+                        <div class="flex items-start justify-between gap-4">
+
+                            <span class="project-number">
+                                06
+                            </span>
+
+                            <span class="status-badge status-complete">
+                                Concluído
+                            </span>
+
+                        </div>
+
+                        <div class="mt-7">
+
+                            <span class="font-mono text-xs text-brand-400">
+                                JavaScript / API
+                            </span>
+
+                            <h3 class="mt-2 text-xl font-bold text-white">
+                                GitHub Stalker
+                            </h3>
+
+                            <p class="mt-3 text-sm leading-6 text-slate-400">
+
+                                Projeto para praticar desenvolvimento web e integração com informações do GitHub,
+                                trabalhando com dados relacionados a usuários e repositórios.
+
+                            </p>
+
+                        </div>
+
+                        <div class="mt-6 flex flex-wrap gap-2">
+
+                            <span class="project-tech">HTML</span>
+                            <span class="project-tech">CSS</span>
+                            <span class="project-tech">JavaScript</span>
+                            <span class="project-tech">API / GitHub</span>
+
+                        </div>
+
+                        <div class="mt-7 flex items-center justify-between border-t border-white/5 pt-5">
+
+                            <span class="text-xs text-slate-600">
+                                Estudo
+                            </span>
+
+                            <a href="https://github.com/carlosvinims/github-stalker" target="_blank"
+                                rel="noopener noreferrer" class="project-link"
+                                aria-label="Ver GitHub Stalker no GitHub">
+
+                                GitHub
+                                <span aria-hidden="true">↗</span>
+
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             FORMAÇÃO
+        ========================== -->
+        <section id="formacao" class="section-spacing border-y border-white/5 bg-white/[0.015]">
+
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+
+                <div class="section-heading reveal" data-reveal>
+
+                    <span class="section-kicker">
+                        04 / formação
+                    </span>
+
+                    <h2 class="section-title">
+
+                        Formação em
+
+                        <span class="text-gradient">
+                            desenvolvimento.
+                        </span>
+
+                    </h2>
+
+                    <p class="section-description">
+
+                        Uma formação técnica que conecta fundamentos, desenvolvimento web, banco de dados e arquitetura
+                        de sistemas.
+
+                    </p>
+                </div>
+
+                <div class="relative ml-3 border-l border-brand-400/20 pl-8 sm:ml-6 sm:pl-10">
+
+                    <div
+                        class="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-brand-400 shadow-[0_0_15px_rgba(56,207,255,0.8)]">
+                    </div>
+
+                    <article class="glass-card reveal rounded-2xl p-6 sm:p-8" data-reveal>
+
+                        <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+
+                            <div>
+
+                                <span class="font-mono text-xs uppercase tracking-[0.18em] text-brand-400">
+                                    2026 — 2027
+                                </span>
+
+                                <h3 class="mt-3 text-2xl font-bold text-white">
+                                    Técnico em Desenvolvimento de Sistemas
+                                </h3>
+
+                                <p class="mt-2 text-sm font-medium text-slate-400">
+                                    Firjan SENAI Resende
+                                </p>
+
+                            </div>
+
+                            <span
+                                class="inline-flex w-fit rounded-full border border-brand-400/20 bg-brand-400/10 px-3 py-1.5 text-xs font-semibold text-brand-300">
+                                Em andamento
+                            </span>
+
+                        </div>
+
+                        <p class="mt-7 max-w-4xl text-sm leading-7 text-slate-400 sm:text-base">
+
+                            Formação técnica voltada ao desenvolvimento de software, análise de sistemas, banco de dados
+                            e desenvolvimento web. Durante o curso, venho estudando lógica de programação,
+                            desenvolvimento front-end, PHP, JavaScript, banco de dados, modelagem de dados, diagramas,
+                            metodologias ágeis e desenvolvimento de sistemas.
+
+                        </p>
+
+                        <div class="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+
+                            <div class="education-chip">
+                                HTML5 / CSS3
+                            </div>
+
+                            <div class="education-chip">
+                                JavaScript
+                            </div>
+
+                            <div class="education-chip">
+                                PHP / MySQL
+                            </div>
+
+                            <div class="education-chip">
+                                MVC / MVP
+                            </div>
+
+                            <div class="education-chip">
+                                Modelagem / DER
+                            </div>
+
+                            <div class="education-chip">
+                                Lógica / Algoritmos
+                            </div>
+
+                            <div class="education-chip">
+                                Desenvolvimento Web
+                            </div>
+
+                            <div class="education-chip">
+                                Metodologias Ágeis
+                            </div>
+
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             EXPERIÊNCIA
+        ========================== -->
+        <section id="experiencia" class="section-spacing">
+
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+
+                <div class="section-heading reveal" data-reveal>
+
+                    <span class="section-kicker">
+                        05 / experiência
+                    </span>
+
+                    <h2 class="section-title">
+
+                        Experiência profissional,
+
+                        <span class="text-gradient">
+                            com transparência.
+                        </span>
+
+                    </h2>
+
+                </div>
+
+                <div class="grid gap-6 lg:grid-cols-2">
+
+                    <!-- Experiência formal -->
+                    <article class="glass-card reveal rounded-2xl p-6 sm:p-8" data-reveal>
+
+                        <div class="flex items-start justify-between gap-5">
+
+                            <div>
+
+                                <span class="font-mono text-xs uppercase tracking-[0.18em] text-slate-500">
+                                    2019 — 2022
+                                </span>
+
+                                <h3 class="mt-3 text-xl font-bold text-white">
+                                    Repositor
+                                </h3>
+
+                                <p class="mt-1 text-sm text-slate-400">
+                                    COMERCIAL R D DE PRODUTOS ALIMENTÍCIOS
+                                </p>
+
+                            </div>
+
+                            <div class="feature-icon">
+
+                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.7" aria-hidden="true">
+
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M20 7h-4V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a1 1 0 0 0-1-1ZM8 7h8" />
+
+                                </svg>
+
+                            </div>
+                        </div>
+
+                        <p class="mt-6 text-sm leading-7 text-slate-500">
+
+                            Experiência profissional anterior à transição para a área de desenvolvimento. Não foram
+                            fornecidas tecnologias relacionadas a essa função.
+
+                        </p>
+
+                    </article>
+
+                    <!-- Objetivo -->
+                    <article class="glass-card reveal relative overflow-hidden rounded-2xl p-6 sm:p-8" data-reveal>
+
+                        <div class="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-brand-500/10 blur-3xl">
+                        </div>
+
+                        <div class="relative">
+
+                            <span class="font-mono text-xs uppercase tracking-[0.18em] text-brand-400">
+                                próximo passo
+                            </span>
+
+                            <h3 class="mt-3 text-xl font-bold text-white">
+                                Primeira oportunidade em tecnologia
+                            </h3>
+
+                            <p class="mt-5 text-sm leading-7 text-slate-400">
+
+                                Ainda não possuo experiência profissional formal em desenvolvimento. Meu objetivo é
+                                conquistar uma primeira oportunidade como
+
+                                <strong class="text-slate-200">
+                                    Desenvolvedor Web PHP/Laravel Júnior
+                                </strong>
+
+                                ou
+
+                                <strong class="text-slate-200">
+                                    Estagiário
+                                </strong>,
+
+                                aplicando os conhecimentos construídos durante minha formação.
+
+                            </p>
+
+                            <div class="mt-6 flex flex-wrap gap-2">
+
+                                <span class="project-tech">
+                                    Aprendizado contínuo
+                                </span>
+
+                                <span class="project-tech">
+                                    Raciocínio lógico
+                                </span>
+
+                                <span class="project-tech">
+                                    Organização
+                                </span>
+
+                                <span class="project-tech">
+                                    Adaptabilidade
+                                </span>
+
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             HABILIDADES
+        ========================== -->
+        <section class="section-spacing border-y border-white/5 bg-white/[0.015]">
+
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+
+                <div class="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
+
+                    <div class="reveal" data-reveal>
+
+                        <span class="section-kicker">
+                            perfil
+                        </span>
+
+                        <h2 class="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+
+                            Além da stack, existe a forma de
+
+                            <span class="text-gradient">
+                                resolver problemas.
+                            </span>
+
+                        </h2>
+
+                        <p class="mt-5 max-w-xl text-sm leading-7 text-slate-500">
+
+                            Meu desenvolvimento profissional também é construído por curiosidade, pesquisa, organização
+                            e disposição para aprender novas tecnologias.
+
+                        </p>
+
+                    </div>
+
+                    <div class="grid gap-3 sm:grid-cols-2">
+
+                        <div class="skill-card reveal" data-reveal>
+                            <span class="skill-dot"></span>
+                            Facilidade para aprender novas tecnologias
+                        </div>
+
+                        <div class="skill-card reveal" data-reveal>
+                            <span class="skill-dot"></span>
+                            Raciocínio lógico
+                        </div>
+
+                        <div class="skill-card reveal" data-reveal>
+                            <span class="skill-dot"></span>
+                            Resolução de problemas
+                        </div>
+
+                        <div class="skill-card reveal" data-reveal>
+                            <span class="skill-dot"></span>
+                            Organização
+                        </div>
+
+                        <div class="skill-card reveal" data-reveal>
+                            <span class="skill-dot"></span>
+                            Trabalho em equipe
+                        </div>
+
+                        <div class="skill-card reveal" data-reveal>
+                            <span class="skill-dot"></span>
+                            Aprendizado contínuo
+                        </div>
+
+                        <div class="skill-card reveal" data-reveal>
+                            <span class="skill-dot"></span>
+                            Pesquisa e solução prática
+                        </div>
+
+                        <div class="skill-card reveal" data-reveal>
+                            <span class="skill-dot"></span>
+                            Adaptabilidade
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             CONTATO
+        ========================== -->
+        <section id="contato" class="section-spacing">
+
+            <div class="mx-auto max-w-5xl px-5 lg:px-8">
+
+                <div class="contact-panel reveal relative overflow-hidden rounded-3xl border border-brand-400/20 bg-gradient-to-br from-brand-500/10 via-white/[0.03] to-transparent p-7 text-center sm:p-12"
+                    data-reveal>
+
+                    <div
+                        class="absolute left-1/2 top-0 h-48 w-48 -translate-x-1/2 rounded-full bg-brand-500/10 blur-3xl">
+                    </div>
+
+                    <div class="relative">
+
+                        <span class="section-kicker">
+                            06 / contato
+                        </span>
+
+                        <h2 class="mx-auto mt-4 max-w-3xl text-3xl font-black tracking-tight text-white sm:text-5xl">
+
+                            Vamos conversar sobre
+
+                            <span class="text-gradient">
+                                tecnologia?
+                            </span>
+
+                        </h2>
+
+                        <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
+
+                            Estou buscando minha primeira oportunidade profissional como Desenvolvedor PHP/Laravel
+                            Júnior ou Estagiário.
+
+                        </p>
+
+                        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+
+                            <a href="mailto:carlos.vinicius582@gmail.com"
+                                class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-500 px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-400">
+
+                                Enviar e-mail
+
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.8" aria-hidden="true">
+
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z" />
+
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4 6 8 6 8-6" />
+
+                                </svg>
+
+                            </a>
+
+                            <a href="https://github.com/carlosvinims" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-brand-400/40 hover:bg-brand-400/10 hover:text-white">
+
+                                Ver GitHub
+
+                            </a>
+
+                            <a href="https://linkedin.com/in/carlosvinims" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-brand-400/40 hover:bg-brand-400/10 hover:text-white">
+
+                                LinkedIn
+
+                            </a>
+
+                        </div>
+
+                        <p class="mt-7 font-mono text-xs text-slate-600">
+                            carlos.vinicius582@gmail.com
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="relative z-10 border-t border-white/5">
+
+        <div
+            class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+
+            <div>
+
+                <p class="text-sm font-semibold text-slate-300">
+                    Carlos Vinicius
+                </p>
+
+                <p class="mt-1 text-xs text-slate-600">
+                    Desenvolvedor Web PHP Júnior em formação.
+                </p>
+
+            </div>
+
+            <div class="flex items-center gap-5">
+
+                <a href="https://github.com/carlosvinims" target="_blank" rel="noopener noreferrer" class="footer-link">
+                    GitHub
+                </a>
+
+                <a href="https://linkedin.com/in/carlosvinims" target="_blank" rel="noopener noreferrer"
+                    class="footer-link">
+                    LinkedIn
+                </a>
+
+                <a href="mailto:carlos.vinicius582@gmail.com" class="footer-link">
+                    E-mail
+                </a>
+
+                <a href="#inicio" class="footer-link" aria-label="Voltar ao início">
+                    ↑
+                </a>
+
+            </div>
+        </div>
+
+        <div class="border-t border-white/5 py-4 text-center">
+
+            <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-700">
+
+                © <span id="current-year"></span> Carlos Vinicius
+
+            </p>
+
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
