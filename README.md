@@ -180,7 +180,7 @@ diretamente no navegador.
 
 Também é possível utilizar uma extensão como Live Server no VS Code para facilitar o desenvolvimento.
 
----
+----
 
 ## Publicar no GitHub Pages
 
