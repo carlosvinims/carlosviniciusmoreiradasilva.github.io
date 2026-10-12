@@ -1,1687 +1,655 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Marca o documento como "com JS" antes da pintura (evita flash nas animações de entrada) -->
+  <script>document.documentElement.classList.add('js');</script>
 
-    <meta name="description"
-        content="Portfólio profissional de Carlos Vinicius, Desenvolvedor Web PHP Júnior em formação, com foco em PHP, Laravel e desenvolvimento de aplicações web.">
+  <!-- ============ SEO BÁSICO ============ -->
+  <title>Carlos Vinicius | Desenvolvedor Web PHP Júnior</title>
+  <meta name="description" content="Portfólio de Carlos Vinicius, estudante de Desenvolvimento de Sistemas e desenvolvedor web em formação com foco em PHP e Laravel. Em busca da primeira oportunidade como Desenvolvedor PHP Júnior ou Estagiário." />
+  <meta name="author" content="Carlos Vinicius Moreira da Silva" />
+  <meta name="theme-color" content="#252525" />
 
-    <meta name="author" content="Carlos Vinicius Moreira da Silva">
+  <!-- Open Graph básico (og:url e og:image exigem URL absoluta: preencha após publicar) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Carlos Vinicius | Desenvolvedor Web PHP Júnior" />
+  <meta property="og:description" content="Estudante de Desenvolvimento de Sistemas com foco em PHP e Laravel. Conheça meus projetos, tecnologias e formação." />
+  <!-- <meta property="og:url" content="https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/" /> -->
+  <!-- <meta property="og:image" content="https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/assets/images/perfil.jpg" /> -->
 
-    <meta name="theme-color" content="#05070b">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
+  <!-- Fontes: Manrope (texto/títulos), JetBrains Mono (terminal/técnico), Pixelify Sans (título do hero) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet" />
 
-    <meta property="og:title" content="Carlos Vinicius | Desenvolvedor Web PHP Júnior">
+  <!-- Tailwind CSS v3 via CDN (versão fixa, sem etapa de build) -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#252525',      // preto grafite (fundo principal)
+            graphite: '#30312F', // cartões e painéis
+            olive: '#474742',    // superfícies secundárias
+            moss: '#66675F',     // bordas e divisórias
+            stone: '#85867B',    // detalhes de baixo contraste (decorativo)
+            mist: '#B9BAAA',     // texto secundário com bom contraste
+            cream: '#E8E8C6',    // destaque principal
+            ivory: '#F0F0D8'     // creme claro (hover)
+          },
+          fontFamily: {
+            sans: ['Manrope', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+            pixel: ['"Pixelify Sans"', '"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
 
-    <meta property="og:description"
-        content="Portfólio de Carlos Vinicius, estudante de Desenvolvimento de Sistemas e Desenvolvedor Web em formação com foco em PHP e Laravel.">
-
-    <meta property="og:image" content="assets/imagens/perfil.jpg">
-
-    <meta property="og:locale" content="pt_BR">
-
-    <title>
-        Carlos Vinicius | Desenvolvedor Web PHP Júnior
-    </title>
-
-    <!-- Favicon SVG embutido para não exigir arquivo adicional -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305070b'/%3E%3Cpath d='M18 20h28M18 32h18M18 44h24' stroke='%2338bdf8' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
-
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#effaff',
-                            100: '#dff6ff',
-                            200: '#b9edff',
-                            300: '#7ddfff',
-                            400: '#38cfff',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            800: '#075985',
-                            900: '#0c4a6e'
-                        }
-                    },
-                    fontFamily: {
-                        sans: [
-                            'Inter',
-                            'ui-sans-serif',
-                            'system-ui',
-                            'sans-serif'
-                        ],
-                        mono: [
-                            'JetBrains Mono',
-                            'ui-monospace',
-                            'SFMono-Regular',
-                            'monospace'
-                        ]
-                    }
-                }
-            }
-        };
-    </script>
-
-    <!-- CSS complementar -->
-    <link rel="stylesheet" href="assets/css/style.css">
+  <!-- CSS complementar (animações, fundo, scrollbar) -->
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
-<body class="bg-[#05070b] text-slate-100 antialiased">
+<body class="bg-ink font-sans text-mist antialiased selection:bg-cream selection:text-ink">
 
-    <!-- Background decorativo -->
-    <div class="site-background" aria-hidden="true">
-        <div class="background-grid"></div>
-        <div class="background-glow background-glow-one"></div>
-        <div class="background-glow background-glow-two"></div>
+  <!-- Link de atalho para teclado -->
+  <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+
+  <!-- ============ FUNDO ANIMADO (decorativo) ============ -->
+  <div class="bg-layer" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <canvas id="bg-canvas"></canvas>
+    <div class="bg-vignette"></div>
+  </div>
+
+  <!-- ============ HEADER / NAVEGAÇÃO ============ -->
+  <header class="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6">
+    <nav id="site-nav" class="glass nav-shell mx-auto flex max-w-6xl items-center justify-between rounded-xl border border-moss/60 px-4 py-2.5" aria-label="Navegação principal">
+      <a href="#inicio" class="flex items-center gap-2.5 rounded-md font-mono text-sm text-cream" aria-label="Carlos Vinicius, ir para o início">
+        <span class="grid h-8 w-8 place-items-center rounded-md border border-moss bg-graphite font-pixel text-base leading-none">CV</span>
+        <span class="hidden sm:inline">carlos.vinicius<span class="cursor" aria-hidden="true"></span></span>
+      </a>
+
+      <ul class="hidden items-center gap-1 md:flex">
+        <li><a class="nav-link" href="#sobre">Sobre</a></li>
+        <li><a class="nav-link" href="#projetos">Projetos</a></li>
+        <li><a class="nav-link" href="#tecnologias">Tecnologias</a></li>
+        <li><a class="nav-link" href="#formacao">Formação</a></li>
+        <li><a class="nav-link" href="#contato">Contato</a></li>
+      </ul>
+
+      <a href="#contato" class="btn-primary hidden md:inline-flex">Contato</a>
+
+      <button id="menu-toggle" type="button" class="grid h-11 w-11 place-items-center rounded-lg border border-moss/70 text-cream md:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu">
+        <svg id="icon-menu" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </nav>
+
+    <!-- Menu mobile -->
+    <div id="mobile-menu" class="glass panel-in mx-auto mt-2 hidden max-w-6xl rounded-xl border border-moss/60 p-2 md:hidden">
+      <ul class="grid gap-1">
+        <li><a class="mobile-link" href="#sobre">Sobre</a></li>
+        <li><a class="mobile-link" href="#projetos">Projetos</a></li>
+        <li><a class="mobile-link" href="#tecnologias">Tecnologias</a></li>
+        <li><a class="mobile-link" href="#formacao">Formação</a></li>
+        <li><a class="mobile-link" href="#contato">Contato</a></li>
+      </ul>
     </div>
+  </header>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
-    <header id="site-header"
-        class="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-[#05070b]/75 backdrop-blur-xl">
+  <main id="conteudo">
 
-        <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8"
-            aria-label="Navegação principal">
+    <!-- ============ HERO ============ -->
+    <section id="inicio" class="relative px-4 pb-10 pt-28 sm:px-6 sm:pt-36" aria-labelledby="hero-title">
+      <div class="mx-auto max-w-6xl">
 
-            <!-- Logo -->
-            <a href="#inicio" class="group flex items-center gap-3" aria-label="Ir para o início">
-                <span
-                    class="flex h-10 w-10 items-center justify-center rounded-xl border border-brand-400/30 bg-brand-400/10 font-mono text-sm font-bold text-brand-300 shadow-[0_0_25px_rgba(14,165,233,0.12)]">
-                    CV
-                </span>
-
-                <span class="hidden sm:block">
-                    <span class="block text-sm font-semibold text-white">
-                        Carlos Vinicius
-                    </span>
-
-                    <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">
-                        web developer
-                    </span>
-                </span>
-            </a>
-
-            <!-- Navegação desktop -->
-            <div class="hidden items-center gap-7 md:flex">
-                <a href="#sobre" class="nav-link">
-                    Sobre
-                </a>
-
-                <a href="#stack" class="nav-link">
-                    Stack
-                </a>
-
-                <a href="#projetos" class="nav-link">
-                    Projetos
-                </a>
-
-                <a href="#formacao" class="nav-link">
-                    Formação
-                </a>
-
-                <a href="#contato" class="nav-link">
-                    Contato
-                </a>
+        <div class="grid items-center gap-10 lg:grid-cols-12">
+          <!-- Texto -->
+          <div class="lg:col-span-7">
+            <div class="hero-in flex flex-wrap items-center gap-2 font-mono text-xs" style="--d:0ms">
+              <span class="tag"><span class="status-dot" aria-hidden="true"></span>SYSTEM.ONLINE</span>
+              <span class="tag">STATUS: AVAILABLE</span>
+              <span class="tag">BUILD: STABLE</span>
             </div>
 
-            <!-- CTA desktop -->
-            <a href="mailto:carlos.vinicius582@gmail.com"
-                class="hidden rounded-xl border border-brand-400/40 bg-brand-400/10 px-4 py-2.5 text-sm font-semibold text-brand-200 transition duration-300 hover:border-brand-300/70 hover:bg-brand-400/20 hover:text-white md:inline-flex">
-                Vamos conversar
-            </a>
-
-            <!-- Botão mobile -->
-            <button id="mobile-menu-button" type="button"
-                class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 transition hover:border-brand-400/40 hover:bg-brand-400/10 md:hidden"
-                aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
-
-                <svg id="menu-open-icon" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="1.8" aria-hidden="true">
-                    <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-
-                <svg id="menu-close-icon" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="1.8" aria-hidden="true">
-                    <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
-                </svg>
-            </button>
-        </nav>
-
-        <!-- Menu mobile -->
-        <div id="mobile-menu"
-            class="mobile-menu hidden border-t border-white/5 bg-[#05070b]/95 px-5 pb-5 pt-3 backdrop-blur-xl md:hidden">
-
-            <div class="flex flex-col gap-1">
-
-                <a href="#sobre" class="mobile-nav-link">
-                    Sobre
-                </a>
-
-                <a href="#stack" class="mobile-nav-link">
-                    Stack
-                </a>
-
-                <a href="#projetos" class="mobile-nav-link">
-                    Projetos
-                </a>
-
-                <a href="#formacao" class="mobile-nav-link">
-                    Formação
-                </a>
-
-                <a href="#experiencia" class="mobile-nav-link">
-                    Experiência
-                </a>
-
-                <a href="#contato" class="mobile-nav-link">
-                    Contato
-                </a>
-
-                <a href="mailto:carlos.vinicius582@gmail.com"
-                    class="mt-3 inline-flex items-center justify-center rounded-xl bg-brand-500 px-4 py-3 text-sm font-semibold text-white">
-                    Entrar em contato
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <main class="relative z-10">
-
-        <!-- =========================
-             HERO
-        ========================== -->
-        <section id="inicio" class="relative flex min-h-screen items-center overflow-hidden pt-28">
-
-            <div
-                class="mx-auto grid w-full max-w-7xl gap-14 px-5 py-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:px-8 lg:py-24">
-
-                <!-- Conteúdo principal -->
-                <div class="reveal" data-reveal>
-
-                    <div
-                        class="mb-7 inline-flex items-center gap-3 rounded-full border border-brand-400/20 bg-brand-400/5 px-4 py-2 font-mono text-xs text-brand-200">
-
-                        <span class="relative flex h-2 w-2">
-                            <span
-                                class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-400 opacity-60"></span>
-                            <span class="relative inline-flex h-2 w-2 rounded-full bg-brand-400"></span>
-                        </span>
-
-                        Disponível para primeira oportunidade
-                    </div>
-
-                    <p class="mb-4 font-mono text-sm tracking-[0.2em] text-brand-400">
-                        &lt; hello_world /&gt;
-                    </p>
-
-                    <h1
-                        class="max-w-4xl text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-7xl">
-
-                        Carlos
-                        <span class="text-gradient">
-                            Vinicius.
-                        </span>
-
-                    </h1>
-
-                    <h2 class="mt-5 max-w-2xl text-xl font-medium leading-relaxed text-slate-300 sm:text-2xl">
-
-                        Desenvolvedor Web
-                        <span class="text-brand-300">
-                            PHP Júnior
-                        </span>
-                        em formação.
-
-                    </h2>
-
-                    <p class="mt-6 max-w-2xl text-base leading-7 text-slate-400 sm:text-lg">
-
-                        Estudante de Desenvolvimento de Sistemas e Desenvolvedor Web em formação, com foco em PHP,
-                        Laravel e desenvolvimento de aplicações web.
-
-                    </p>
-
-                    <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-
-                        <a href="#projetos"
-                            class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-500 px-6 py-3 text-sm font-bold text-white shadow-[0_0_35px_rgba(14,165,233,0.22)] transition duration-300 hover:-translate-y-0.5 hover:bg-brand-400">
-
-                            Explorar projetos
-
-                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                aria-hidden="true">
-
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
-
-                            </svg>
-                        </a>
-
-                        <a href="mailto:carlos.vinicius582@gmail.com"
-                            class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-slate-200 transition duration-300 hover:-translate-y-0.5 hover:border-brand-400/40 hover:bg-brand-400/10 hover:text-white">
-
-                            Entrar em contato
-
-                        </a>
-                    </div>
-
-                    <!-- Links rápidos -->
-                    <div class="mt-9 flex flex-wrap items-center gap-3">
-
-                        <a href="https://github.com/carlosvinims" target="_blank" rel="noopener noreferrer"
-                            class="social-chip" aria-label="GitHub de Carlos Vinicius">
-
-                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-
-                                <path
-                                    d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.42-4.04-1.42-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.74.08-.74 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.29-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.13 3.17.76.84 1.22 1.91 1.22 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z" />
-
-                            </svg>
-
-                            GitHub
-                        </a>
-
-                        <a href="https://linkedin.com/in/carlosvinims" target="_blank" rel="noopener noreferrer"
-                            class="social-chip" aria-label="LinkedIn de Carlos Vinicius">
-
-                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-
-                                <path
-                                    d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.67H9.34V8.98h3.41v1.57h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM3.54 20.45h3.57V8.98H3.54v11.47ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z" />
-
-                            </svg>
-
-                            LinkedIn
-                        </a>
-
-                        <span class="social-chip cursor-default">
-
-                            <svg class="h-4 w-4 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.7" aria-hidden="true">
-
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Z" />
-
-                                <circle cx="12" cy="9" r="2.5" />
-
-                            </svg>
-
-                            Quatis, RJ
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Terminal / visual -->
-                <div class="reveal relative" data-reveal>
-
-                    <div class="absolute -inset-6 rounded-[2rem] bg-brand-500/10 blur-3xl"></div>
-
-                    <div
-                        class="terminal-card relative overflow-hidden rounded-2xl border border-white/10 bg-[#090d14]/90 shadow-2xl shadow-black/40">
-
-                        <div class="flex items-center justify-between border-b border-white/10 px-5 py-4">
-
-                            <div class="flex items-center gap-2">
-                                <span class="h-3 w-3 rounded-full bg-red-400/80"></span>
-                                <span class="h-3 w-3 rounded-full bg-yellow-400/80"></span>
-                                <span class="h-3 w-3 rounded-full bg-green-400/80"></span>
-                            </div>
-
-                            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-600">
-                                carlos@portfolio
-                            </span>
-                        </div>
-
-                        <div class="p-6 sm:p-8">
-
-                            <div class="mb-7 font-mono text-xs leading-7 text-slate-500">
-                                <span class="text-brand-400">$</span>
-                                whoami
-                            </div>
-
-                            <div class="space-y-4 font-mono text-sm">
-
-                                <p>
-                                    <span class="text-slate-500">name:</span>
-                                    <span class="text-white">
-                                        "Carlos Vinicius"
-                                    </span>
-                                </p>
-
-                                <p>
-                                    <span class="text-slate-500">role:</span>
-                                    <span class="text-brand-300">
-                                        "PHP Junior Developer"
-                                    </span>
-                                </p>
-
-                                <p>
-                                    <span class="text-slate-500">focus:</span>
-                                    <span class="text-white">
-                                        ["PHP", "Laravel", "Web"]
-                                    </span>
-                                </p>
-
-                                <p>
-                                    <span class="text-slate-500">education:</span>
-                                    <span class="text-white">
-                                        "SENAI Resende"
-                                    </span>
-                                </p>
-
-                                <p>
-                                    <span class="text-slate-500">status:</span>
-                                    <span class="text-green-400">
-                                        "learning_and_building"
-                                    </span>
-                                </p>
-
-                            </div>
-
-                            <div class="mt-8 border-t border-white/5 pt-6">
-
-                                <div class="mb-2 flex items-center justify-between">
-
-                                    <span class="font-mono text-xs text-slate-500">
-                                        current_stack
-                                    </span>
-
-                                    <span class="font-mono text-xs text-brand-400">
-                                        PHP / Laravel
-                                    </span>
-
-                                </div>
-
-                                <div class="h-1.5 overflow-hidden rounded-full bg-white/5">
-
-                                    <div class="h-full w-3/4 rounded-full bg-gradient-to-r from-brand-600 to-brand-300">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pequenos elementos decorativos -->
-                    <div
-                        class="absolute -right-3 -top-5 hidden rounded-xl border border-brand-400/20 bg-[#0a111b]/90 px-4 py-3 font-mono text-xs text-brand-300 shadow-xl sm:block">
-                        MVC
-                    </div>
-
-                    <div
-                        class="absolute -bottom-5 -left-4 hidden rounded-xl border border-white/10 bg-[#0a111b]/90 px-4 py-3 font-mono text-xs text-slate-400 shadow-xl sm:block">
-                        Git + GitHub
-                    </div>
-                </div>
-            </div>
-
-            <!-- Indicador de scroll -->
-            <a href="#sobre"
-                class="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-slate-600 transition hover:text-brand-400 md:flex"
-                aria-label="Ir para a seção Sobre">
-
-                <span class="font-mono text-[9px] uppercase tracking-[0.3em]">
-                    scroll
-                </span>
-
-                <span class="h-10 w-px bg-gradient-to-b from-brand-400/70 to-transparent"></span>
-
-            </a>
-        </section>
-
-        <!-- =========================
-             SOBRE
-        ========================== -->
-        <section id="sobre" class="section-spacing">
-
-            <div class="mx-auto max-w-7xl px-5 lg:px-8">
-
-                <div class="section-heading reveal" data-reveal>
-
-                    <span class="section-kicker">
-                        01 / sobre
-                    </span>
-
-                    <h2 class="section-title">
-
-                        Construindo minha
-
-                        <span class="text-gradient">
-                            base em tecnologia.
-                        </span>
-
-                    </h2>
-
-                    <p class="section-description">
-                        Uma formação prática voltada para desenvolvimento web, lógica, bancos de dados e arquitetura de
-                        sistemas.
-                    </p>
-                </div>
-
-                <div class="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-
-                    <!-- Foto -->
-                    <div class="reveal" data-reveal>
-
-                        <div class="glass-card relative h-full min-h-[360px] overflow-hidden rounded-2xl p-2">
-
-                            <div
-                                class="absolute inset-0 bg-gradient-to-br from-brand-500/10 via-transparent to-transparent">
-                            </div>
-
-                            <div
-                                class="relative flex h-full min-h-[350px] items-center justify-center overflow-hidden rounded-xl border border-white/5 bg-[#080b11]">
-
-                                <!-- CAMINHO DA FOTO CORRIGIDO -->
-                                <img src="assets/imagens/perfil.jpg" alt="Foto de perfil de Carlos Vinicius"
-                                    class="h-full w-full object-cover"
-                                    onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-
-                                <!-- Placeholder caso perfil.jpg ainda não exista -->
-                                <div
-                                    class="hidden absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-
-                                    <div
-                                        class="mb-5 flex h-20 w-20 items-center justify-center rounded-2xl border border-brand-400/30 bg-brand-400/10 font-mono text-2xl font-bold text-brand-300">
-                                        CV
-                                    </div>
-
-                                    <p class="font-mono text-xs uppercase tracking-[0.2em] text-slate-500">
-                                        assets/images/perfil.jpg
-                                    </p>
-
-                                    <p class="mt-2 max-w-xs text-sm text-slate-600">
-                                        Insira sua foto neste caminho para substituir o placeholder.
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Texto -->
-                    <div class="reveal" data-reveal>
-
-                        <div class="glass-card rounded-2xl p-6 sm:p-8">
-
-                            <div class="flex items-center gap-3">
-
-                                <span class="h-2 w-2 rounded-full bg-brand-400 shadow-[0_0_12px_rgba(56,207,255,0.8)]">
-                                </span>
-
-                                <span class="font-mono text-xs uppercase tracking-[0.2em] text-slate-500">
-                                    perfil.profissional
-                                </span>
-
-                            </div>
-
-                            <p class="mt-6 text-base leading-8 text-slate-300">
-
-                                Sou estudante de Desenvolvimento de Sistemas na
-
-                                <strong class="font-semibold text-white">
-                                    Firjan SENAI Resende
-                                </strong>
-
-                                e venho construindo minha formação prática em desenvolvimento web, com foco
-                                principalmente no ecossistema PHP e Laravel.
-
-                            </p>
-
-                            <p class="mt-5 text-base leading-8 text-slate-400">
-
-                                Minha stack principal inclui PHP, Laravel, Blade, JavaScript, HTML5, CSS3, Bootstrap,
-                                MySQL e Git/GitHub. Ao longo dos estudos, venho desenvolvendo aplicações web, sistemas
-                                CRUD, projetos utilizando banco de dados, integração e consumo de APIs, interfaces
-                                responsivas e aplicações estruturadas utilizando conceitos de MVC.
-
-                            </p>
-
-                            <p class="mt-5 text-base leading-8 text-slate-400">
-
-                                Também possuo conhecimentos em modelagem de dados, lógica de programação, algoritmos e
-                                conceitos de arquitetura de software, tendo estudado padrões como MVC e MVP. Tenho
-                                experiência prática com recursos do Laravel como migrations, seeders, Eloquent, rotas,
-                                controllers, views Blade e Artisan.
-
-                            </p>
-
-                            <div class="mt-7 grid gap-3 sm:grid-cols-2">
-
-                                <div class="info-mini-card">
-                                    <span class="info-mini-label">
-                                        Localização
-                                    </span>
-
-                                    <span class="info-mini-value">
-                                        Quatis, Rio de Janeiro
-                                    </span>
-                                </div>
-
-                                <div class="info-mini-card">
-                                    <span class="info-mini-label">
-                                        Objetivo
-                                    </span>
-
-                                    <span class="info-mini-value">
-                                        PHP/Laravel Júnior ou Estágio
-                                    </span>
-                                </div>
-
-                                <div class="info-mini-card">
-                                    <span class="info-mini-label">
-                                        Formação
-                                    </span>
-
-                                    <span class="info-mini-value">
-                                        Técnico em Desenvolvimento de Sistemas
-                                    </span>
-                                </div>
-
-                                <div class="info-mini-card">
-                                    <span class="info-mini-label">
-                                        Status
-                                    </span>
-
-                                    <span class="info-mini-value text-brand-300">
-                                        Em formação
-                                    </span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================
-             STACK
-        ========================== -->
-        <section id="stack" class="section-spacing border-y border-white/5 bg-white/[0.015]">
-
-            <div class="mx-auto max-w-7xl px-5 lg:px-8">
-
-                <div class="section-heading reveal" data-reveal>
-
-                    <span class="section-kicker">
-                        02 / stack
-                    </span>
-
-                    <h2 class="section-title">
-
-                        Tecnologias que estou
-
-                        <span class="text-gradient">
-                            desenvolvendo.
-                        </span>
-
-                    </h2>
-
-                    <p class="section-description">
-                        Conhecimentos apresentados de forma transparente, sem classificações artificiais de senioridade.
-                    </p>
-
-                </div>
-
-                <div class="grid gap-6 lg:grid-cols-2">
-
-                    <!-- Principais -->
-                    <div class="glass-card reveal rounded-2xl p-6 sm:p-8" data-reveal>
-
-                        <div class="mb-7 flex items-center justify-between">
-
-                            <div>
-
-                                <span class="section-kicker">
-                                    core
-                                </span>
-
-                                <h3 class="mt-2 text-xl font-bold text-white">
-                                    Conhecimentos principais
-                                </h3>
-
-                            </div>
-
-                            <span class="font-mono text-xs text-brand-400">
-                                01
-                            </span>
-
-                        </div>
-
-                        <div class="flex flex-wrap gap-3">
-
-                            <span class="tech-badge tech-primary">PHP</span>
-                            <span class="tech-badge tech-primary">Laravel</span>
-                            <span class="tech-badge tech-primary">JavaScript</span>
-                            <span class="tech-badge tech-primary">MySQL</span>
-                            <span class="tech-badge tech-primary">HTML5</span>
-                            <span class="tech-badge tech-primary">CSS3</span>
-                            <span class="tech-badge tech-primary">Bootstrap</span>
-                            <span class="tech-badge tech-primary">Git / GitHub</span>
-
-                        </div>
-                    </div>
-
-                    <!-- Complementares -->
-                    <div class="glass-card reveal rounded-2xl p-6 sm:p-8" data-reveal>
-
-                        <div class="mb-7 flex items-center justify-between">
-
-                            <div>
-
-                                <span class="section-kicker">
-                                    complementary
-                                </span>
-
-                                <h3 class="mt-2 text-xl font-bold text-white">
-                                    Conhecimentos complementares
-                                </h3>
-
-                            </div>
-
-                            <span class="font-mono text-xs text-brand-400">
-                                02
-                            </span>
-
-                        </div>
-
-                        <div class="flex flex-wrap gap-3">
-
-                            <span class="tech-badge">SQLite</span>
-                            <span class="tech-badge">Composer</span>
-                            <span class="tech-badge">NPM</span>
-                            <span class="tech-badge">Vite</span>
-                            <span class="tech-badge">MVC</span>
-                            <span class="tech-badge">MVP</span>
-                            <span class="tech-badge">DER</span>
-                            <span class="tech-badge">Eloquent ORM</span>
-                            <span class="tech-badge">Migrations</span>
-                            <span class="tech-badge">Seeders</span>
-                            <span class="tech-badge">APIs</span>
-                            <span class="tech-badge">CRUD</span>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Competências -->
-                <div class="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-
-                    <div class="glass-card reveal rounded-2xl p-6" data-reveal>
-
-                        <div class="feature-icon">
-
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.7" aria-hidden="true">
-
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="m8 9 3-3 3 3m-6 6 3 3 3-3M5 12h14" />
-
-                            </svg>
-
-                        </div>
-
-                        <h3 class="mt-5 font-bold text-white">
-                            Desenvolvimento Web
-                        </h3>
-
-                        <p class="mt-2 text-sm leading-6 text-slate-500">
-                            Estruturação de aplicações web, interfaces responsivas e organização de código.
-                        </p>
-
-                    </div>
-
-                    <div class="glass-card reveal rounded-2xl p-6" data-reveal>
-
-                        <div class="feature-icon">
-
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.7" aria-hidden="true">
-
-                                <ellipse cx="12" cy="5" rx="7" ry="3" />
-
-                                <path stroke-linecap="round"
-                                    d="M5 5v7c0 1.66 3.13 3 7 3s7-1.34 7-3V5M5 12v7c0 1.66 3.13 3 7 3s7-1.34 7-3v-7" />
-
-                            </svg>
-
-                        </div>
-
-                        <h3 class="mt-5 font-bold text-white">
-                            Dados & CRUD
-                        </h3>
-
-                        <p class="mt-2 text-sm leading-6 text-slate-500">
-                            Modelagem de dados, bancos relacionais, migrations, seeders e operações CRUD.
-                        </p>
-
-                    </div>
-
-                    <div class="glass-card reveal rounded-2xl p-6" data-reveal>
-
-                        <div class="feature-icon">
-
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.7" aria-hidden="true">
-
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14" />
-
-                            </svg>
-
-                        </div>
-
-                        <h3 class="mt-5 font-bold text-white">
-                            Arquitetura
-                        </h3>
-
-                        <p class="mt-2 text-sm leading-6 text-slate-500">
-                            Prática com MVC, conceitos de MVP e organização de responsabilidades em aplicações.
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================
-             PROJETOS
-        ========================== -->
-        <section id="projetos" class="section-spacing">
-
-            <div class="mx-auto max-w-7xl px-5 lg:px-8">
-
-                <div class="section-heading reveal" data-reveal>
-
-                    <span class="section-kicker">
-                        03 / projetos
-                    </span>
-
-                    <h2 class="section-title">
-
-                        Onde a teoria vira
-
-                        <span class="text-gradient">
-                            prática.
-                        </span>
-
-                    </h2>
-
-                    <p class="section-description">
-
-                        Projetos acadêmicos e próprios que mostram minha evolução em desenvolvimento web, PHP, Laravel,
-                        bancos de dados e JavaScript.
-
-                    </p>
-                </div>
-
-                <!-- Filtros -->
-                <div class="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filtrar projetos">
-
-                    <button type="button" class="filter-button is-active" data-filter="all">
-                        Todos
-                    </button>
-
-                    <button type="button" class="filter-button" data-filter="laravel">
-                        Laravel
-                    </button>
-
-                    <button type="button" class="filter-button" data-filter="php">
-                        PHP
-                    </button>
-
-                    <button type="button" class="filter-button" data-filter="javascript">
-                        JavaScript
-                    </button>
-
-                </div>
-
-                <!-- Grid de projetos: 2 colunas com mais espaço -->
-                <div id="projects-grid" class="grid gap-8 md:grid-cols-2">
-
-                    <!-- Finance Control -->
-                    <article class="project-card glass-card reveal rounded-2xl p-6" data-project data-category="laravel"
-                        data-reveal>
-
-                        <div class="flex items-start justify-between gap-4">
-
-                            <span class="project-number">
-                                01
-                            </span>
-
-                            <span class="status-badge status-progress">
-                                Em desenvolvimento
-                            </span>
-
-                        </div>
-
-                        <div class="mt-7">
-
-                            <span class="font-mono text-xs text-brand-400">
-                                Laravel / MVC
-                            </span>
-
-                            <h3 class="mt-2 text-xl font-bold text-white">
-                                Finance Control
-                            </h3>
-
-                            <p class="mt-3 text-sm leading-6 text-slate-400">
-
-                                Aplicação de controle financeiro voltada ao gerenciamento e organização de informações
-                                financeiras, utilizando a estrutura MVC do Laravel e integração com banco de dados.
-
-                            </p>
-                        </div>
-
-                        <div class="mt-6 flex flex-wrap gap-2">
-
-                            <span class="project-tech">PHP</span>
-                            <span class="project-tech">Laravel</span>
-                            <span class="project-tech">Blade</span>
-                            <span class="project-tech">MySQL / SQLite</span>
-                            <span class="project-tech">Vite</span>
-
-                        </div>
-
-                        <div class="mt-7 flex items-center justify-between border-t border-white/5 pt-5">
-
-                            <span class="text-xs text-slate-600">
-                                Estudo
-                            </span>
-
-                            <a href="https://github.com/carlosvinims/finance-control" target="_blank"
-                                rel="noopener noreferrer" class="project-link"
-                                aria-label="Ver Finance Control no GitHub">
-
-                                GitHub
-                                <span aria-hidden="true">↗</span>
-
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Catálogo -->
-                    <article class="project-card glass-card reveal rounded-2xl p-6" data-project data-category="laravel"
-                        data-reveal>
-
-                        <div class="flex items-start justify-between gap-4">
-
-                            <span class="project-number">
-                                02
-                            </span>
-
-                            <span class="status-badge status-complete">
-                                Concluído
-                            </span>
-
-                        </div>
-
-                        <div class="mt-7">
-
-                            <span class="font-mono text-xs text-brand-400">
-                                Laravel / CRUD
-                            </span>
-
-                            <h3 class="mt-2 text-xl font-bold text-white">
-                                Catálogo de Produtos
-                            </h3>
-
-                            <p class="mt-3 text-sm leading-6 text-slate-400">
-
-                                Aplicação web para gerenciamento e apresentação de produtos, praticando CRUD,
-                                organização de dados e arquitetura padrão do Laravel.
-
-                            </p>
-
-                        </div>
-
-                        <div class="mt-6 flex flex-wrap gap-2">
-
-                            <span class="project-tech">PHP</span>
-                            <span class="project-tech">Laravel</span>
-                            <span class="project-tech">Blade</span>
-                            <span class="project-tech">MySQL</span>
-                            <span class="project-tech">Vite</span>
-
-                        </div>
-
-                        <div class="mt-7 flex items-center justify-between border-t border-white/5 pt-5">
-
-                            <span class="text-xs text-slate-600">
-                                Estudo
-                            </span>
-
-                            <a href="https://github.com/carlosvinims/catalogo-produtos_laravel" target="_blank"
-                                rel="noopener noreferrer" class="project-link"
-                                aria-label="Ver Catálogo de Produtos no GitHub">
-
-                                GitHub
-                                <span aria-hidden="true">↗</span>
-
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Clínica -->
-                    <article class="project-card glass-card reveal rounded-2xl p-6" data-project data-category="laravel"
-                        data-reveal>
-
-                        <div class="flex items-start justify-between gap-4">
-
-                            <span class="project-number">
-                                03
-                            </span>
-
-                            <span class="status-badge status-private">
-                                Repositório privado
-                            </span>
-
-                        </div>
-
-                        <div class="mt-7">
-
-                            <span class="font-mono text-xs text-brand-400">
-                                Laravel / Eloquent
-                            </span>
-
-                            <h3 class="mt-2 text-xl font-bold text-white">
-                                Clínica Veterinária
-                            </h3>
-
-                            <p class="mt-3 text-sm leading-6 text-slate-400">
-
-                                Sistema web desenvolvido durante os estudos de Laravel, com foco em organização e
-                                gerenciamento de informações de uma clínica veterinária.
-
-                            </p>
-                        </div>
-
-                        <div class="mt-6 flex flex-wrap gap-2">
-
-                            <span class="project-tech">PHP</span>
-                            <span class="project-tech">Laravel</span>
-                            <span class="project-tech">MySQL</span>
-                            <span class="project-tech">Eloquent</span>
-                            <span class="project-tech">Migrations</span>
-                            <span class="project-tech">Seeders</span>
-
-                        </div>
-
-                        <div class="mt-7 flex items-center justify-between border-t border-white/5 pt-5">
-
-                            <span class="text-xs text-slate-600">
-                                Estudo
-                            </span>
-
-                            <span class="text-xs text-slate-600">
-                                Sem link público
-                            </span>
-
-                        </div>
-                    </article>
-
-                    <!-- Monitor -->
-                    <article class="project-card glass-card reveal rounded-2xl p-6" data-project data-category="laravel"
-                        data-reveal>
-
-                        <div class="flex items-start justify-between gap-4">
-
-                            <span class="project-number">
-                                04
-                            </span>
-
-                            <span class="status-badge status-progress">
-                                Em desenvolvimento
-                            </span>
-
-                        </div>
-
-                        <div class="mt-7">
-
-                            <span class="font-mono text-xs text-brand-400">
-                                Laravel / Dados
-                            </span>
-
-                            <h3 class="mt-2 text-xl font-bold text-white">
-                                Monitor de Cotações
-                            </h3>
-
-                            <p class="mt-3 text-sm leading-6 text-slate-400">
-
-                                Aplicação de estudo para praticar desenvolvimento com PHP e Laravel, explorando
-                                estrutura MVC, rotas, controllers, views e integração com dados.
-
-                            </p>
-
-                        </div>
-
-                        <div class="mt-6 flex flex-wrap gap-2">
-
-                            <span class="project-tech">PHP</span>
-                            <span class="project-tech">Laravel</span>
-                            <span class="project-tech">Blade</span>
-                            <span class="project-tech">Composer</span>
-                            <span class="project-tech">Vite</span>
-
-                        </div>
-
-                        <div class="mt-7 flex items-center justify-between border-t border-white/5 pt-5">
-
-                            <span class="text-xs text-slate-600">
-                                Estudo
-                            </span>
-
-                            <a href="https://github.com/carlosvinims/monitor-cotacoes-laravel-" target="_blank"
-                                rel="noopener noreferrer" class="project-link"
-                                aria-label="Ver Monitor de Cotações no GitHub">
-
-                                GitHub
-                                <span aria-hidden="true">↗</span>
-
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Loja -->
-                    <article class="project-card glass-card reveal rounded-2xl p-6" data-project data-category="php"
-                        data-reveal>
-
-                        <div class="flex items-start justify-between gap-4">
-
-                            <span class="project-number">
-                                05
-                            </span>
-
-                            <span class="status-badge status-complete">
-                                Concluído
-                            </span>
-
-                        </div>
-
-                        <div class="mt-7">
-
-                            <span class="font-mono text-xs text-brand-400">
-                                PHP / Front-end
-                            </span>
-
-                            <h3 class="mt-2 text-xl font-bold text-white">
-                                Loja de Cards
-                            </h3>
-
-                            <p class="mt-3 text-sm leading-6 text-slate-400">
-
-                                Mini aplicação web em PHP para simular uma loja de cartas, praticando organização de
-                                dados e integração entre lógica da aplicação e interface.
-
-                            </p>
-
-                        </div>
-
-                        <div class="mt-6 flex flex-wrap gap-2">
-
-                            <span class="project-tech">PHP</span>
-                            <span class="project-tech">HTML</span>
-                            <span class="project-tech">CSS</span>
-                            <span class="project-tech">JavaScript</span>
-
-                        </div>
-
-                        <div class="mt-7 flex items-center justify-between border-t border-white/5 pt-5">
-
-                            <span class="text-xs text-slate-600">
-                                Estudo
-                            </span>
-
-                            <a href="https://github.com/carlosvinims/loja-de-cards" target="_blank"
-                                rel="noopener noreferrer" class="project-link" aria-label="Ver Loja de Cards no GitHub">
-
-                                GitHub
-                                <span aria-hidden="true">↗</span>
-
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- GitHub Stalker -->
-                    <article class="project-card glass-card reveal rounded-2xl p-6" data-project
-                        data-category="javascript" data-reveal>
-
-                        <div class="flex items-start justify-between gap-4">
-
-                            <span class="project-number">
-                                06
-                            </span>
-
-                            <span class="status-badge status-complete">
-                                Concluído
-                            </span>
-
-                        </div>
-
-                        <div class="mt-7">
-
-                            <span class="font-mono text-xs text-brand-400">
-                                JavaScript / API
-                            </span>
-
-                            <h3 class="mt-2 text-xl font-bold text-white">
-                                GitHub Stalker
-                            </h3>
-
-                            <p class="mt-3 text-sm leading-6 text-slate-400">
-
-                                Projeto para praticar desenvolvimento web e integração com informações do GitHub,
-                                trabalhando com dados relacionados a usuários e repositórios.
-
-                            </p>
-
-                        </div>
-
-                        <div class="mt-6 flex flex-wrap gap-2">
-
-                            <span class="project-tech">HTML</span>
-                            <span class="project-tech">CSS</span>
-                            <span class="project-tech">JavaScript</span>
-                            <span class="project-tech">API / GitHub</span>
-
-                        </div>
-
-                        <div class="mt-7 flex items-center justify-between border-t border-white/5 pt-5">
-
-                            <span class="text-xs text-slate-600">
-                                Estudo
-                            </span>
-
-                            <a href="https://github.com/carlosvinims/github-stalker" target="_blank"
-                                rel="noopener noreferrer" class="project-link"
-                                aria-label="Ver GitHub Stalker no GitHub">
-
-                                GitHub
-                                <span aria-hidden="true">↗</span>
-
-                            </a>
-                        </div>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================
-             FORMAÇÃO
-        ========================== -->
-        <section id="formacao" class="section-spacing border-y border-white/5 bg-white/[0.015]">
-
-            <div class="mx-auto max-w-7xl px-5 lg:px-8">
-
-                <div class="section-heading reveal" data-reveal>
-
-                    <span class="section-kicker">
-                        04 / formação
-                    </span>
-
-                    <h2 class="section-title">
-
-                        Formação em
-
-                        <span class="text-gradient">
-                            desenvolvimento.
-                        </span>
-
-                    </h2>
-
-                    <p class="section-description">
-
-                        Uma formação técnica que conecta fundamentos, desenvolvimento web, banco de dados e arquitetura
-                        de sistemas.
-
-                    </p>
-                </div>
-
-                <div class="relative ml-3 border-l border-brand-400/20 pl-8 sm:ml-6 sm:pl-10">
-
-                    <div
-                        class="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-brand-400 shadow-[0_0_15px_rgba(56,207,255,0.8)]">
-                    </div>
-
-                    <article class="glass-card reveal rounded-2xl p-6 sm:p-8" data-reveal>
-
-                        <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-
-                            <div>
-
-                                <span class="font-mono text-xs uppercase tracking-[0.18em] text-brand-400">
-                                    2026 — 2027
-                                </span>
-
-                                <h3 class="mt-3 text-2xl font-bold text-white">
-                                    Técnico em Desenvolvimento de Sistemas
-                                </h3>
-
-                                <p class="mt-2 text-sm font-medium text-slate-400">
-                                    Firjan SENAI Resende
-                                </p>
-
-                            </div>
-
-                            <span
-                                class="inline-flex w-fit rounded-full border border-brand-400/20 bg-brand-400/10 px-3 py-1.5 text-xs font-semibold text-brand-300">
-                                Em andamento
-                            </span>
-
-                        </div>
-
-                        <p class="mt-7 max-w-4xl text-sm leading-7 text-slate-400 sm:text-base">
-
-                            Formação técnica voltada ao desenvolvimento de software, análise de sistemas, banco de dados
-                            e desenvolvimento web. Durante o curso, venho estudando lógica de programação,
-                            desenvolvimento front-end, PHP, JavaScript, banco de dados, modelagem de dados, diagramas,
-                            metodologias ágeis e desenvolvimento de sistemas.
-
-                        </p>
-
-                        <div class="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-
-                            <div class="education-chip">
-                                HTML5 / CSS3
-                            </div>
-
-                            <div class="education-chip">
-                                JavaScript
-                            </div>
-
-                            <div class="education-chip">
-                                PHP / MySQL
-                            </div>
-
-                            <div class="education-chip">
-                                MVC / MVP
-                            </div>
-
-                            <div class="education-chip">
-                                Modelagem / DER
-                            </div>
-
-                            <div class="education-chip">
-                                Lógica / Algoritmos
-                            </div>
-
-                            <div class="education-chip">
-                                Desenvolvimento Web
-                            </div>
-
-                            <div class="education-chip">
-                                Metodologias Ágeis
-                            </div>
-
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================
-             EXPERIÊNCIA
-        ========================== -->
-        <section id="experiencia" class="section-spacing">
-
-            <div class="mx-auto max-w-7xl px-5 lg:px-8">
-
-                <div class="section-heading reveal" data-reveal>
-
-                    <span class="section-kicker">
-                        05 / experiência
-                    </span>
-
-                    <h2 class="section-title">
-
-                        Experiência profissional,
-
-                        <span class="text-gradient">
-                            com transparência.
-                        </span>
-
-                    </h2>
-
-                </div>
-
-                <div class="grid gap-6 lg:grid-cols-2">
-
-                    <!-- Experiência formal -->
-                    <article class="glass-card reveal rounded-2xl p-6 sm:p-8" data-reveal>
-
-                        <div class="flex items-start justify-between gap-5">
-
-                            <div>
-
-                                <span class="font-mono text-xs uppercase tracking-[0.18em] text-slate-500">
-                                    2019 — 2022
-                                </span>
-
-                                <h3 class="mt-3 text-xl font-bold text-white">
-                                    Repositor
-                                </h3>
-
-                                <p class="mt-1 text-sm text-slate-400">
-                                    COMERCIAL R D DE PRODUTOS ALIMENTÍCIOS
-                                </p>
-
-                            </div>
-
-                            <div class="feature-icon">
-
-                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.7" aria-hidden="true">
-
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M20 7h-4V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a1 1 0 0 0-1-1ZM8 7h8" />
-
-                                </svg>
-
-                            </div>
-                        </div>
-
-                        <p class="mt-6 text-sm leading-7 text-slate-500">
-
-                            Experiência profissional anterior à transição para a área de desenvolvimento. Não foram
-                            fornecidas tecnologias relacionadas a essa função.
-
-                        </p>
-
-                    </article>
-
-                    <!-- Objetivo -->
-                    <article class="glass-card reveal relative overflow-hidden rounded-2xl p-6 sm:p-8" data-reveal>
-
-                        <div class="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-brand-500/10 blur-3xl">
-                        </div>
-
-                        <div class="relative">
-
-                            <span class="font-mono text-xs uppercase tracking-[0.18em] text-brand-400">
-                                próximo passo
-                            </span>
-
-                            <h3 class="mt-3 text-xl font-bold text-white">
-                                Primeira oportunidade em tecnologia
-                            </h3>
-
-                            <p class="mt-5 text-sm leading-7 text-slate-400">
-
-                                Ainda não possuo experiência profissional formal em desenvolvimento. Meu objetivo é
-                                conquistar uma primeira oportunidade como
-
-                                <strong class="text-slate-200">
-                                    Desenvolvedor Web PHP/Laravel Júnior
-                                </strong>
-
-                                ou
-
-                                <strong class="text-slate-200">
-                                    Estagiário
-                                </strong>,
-
-                                aplicando os conhecimentos construídos durante minha formação.
-
-                            </p>
-
-                            <div class="mt-6 flex flex-wrap gap-2">
-
-                                <span class="project-tech">
-                                    Aprendizado contínuo
-                                </span>
-
-                                <span class="project-tech">
-                                    Raciocínio lógico
-                                </span>
-
-                                <span class="project-tech">
-                                    Organização
-                                </span>
-
-                                <span class="project-tech">
-                                    Adaptabilidade
-                                </span>
-
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================
-             HABILIDADES
-        ========================== -->
-        <section class="section-spacing border-y border-white/5 bg-white/[0.015]">
-
-            <div class="mx-auto max-w-7xl px-5 lg:px-8">
-
-                <div class="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
-
-                    <div class="reveal" data-reveal>
-
-                        <span class="section-kicker">
-                            perfil
-                        </span>
-
-                        <h2 class="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-
-                            Além da stack, existe a forma de
-
-                            <span class="text-gradient">
-                                resolver problemas.
-                            </span>
-
-                        </h2>
-
-                        <p class="mt-5 max-w-xl text-sm leading-7 text-slate-500">
-
-                            Meu desenvolvimento profissional também é construído por curiosidade, pesquisa, organização
-                            e disposição para aprender novas tecnologias.
-
-                        </p>
-
-                    </div>
-
-                    <div class="grid gap-3 sm:grid-cols-2">
-
-                        <div class="skill-card reveal" data-reveal>
-                            <span class="skill-dot"></span>
-                            Facilidade para aprender novas tecnologias
-                        </div>
-
-                        <div class="skill-card reveal" data-reveal>
-                            <span class="skill-dot"></span>
-                            Raciocínio lógico
-                        </div>
-
-                        <div class="skill-card reveal" data-reveal>
-                            <span class="skill-dot"></span>
-                            Resolução de problemas
-                        </div>
-
-                        <div class="skill-card reveal" data-reveal>
-                            <span class="skill-dot"></span>
-                            Organização
-                        </div>
-
-                        <div class="skill-card reveal" data-reveal>
-                            <span class="skill-dot"></span>
-                            Trabalho em equipe
-                        </div>
-
-                        <div class="skill-card reveal" data-reveal>
-                            <span class="skill-dot"></span>
-                            Aprendizado contínuo
-                        </div>
-
-                        <div class="skill-card reveal" data-reveal>
-                            <span class="skill-dot"></span>
-                            Pesquisa e solução prática
-                        </div>
-
-                        <div class="skill-card reveal" data-reveal>
-                            <span class="skill-dot"></span>
-                            Adaptabilidade
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================
-             CONTATO
-        ========================== -->
-        <section id="contato" class="section-spacing">
-
-            <div class="mx-auto max-w-5xl px-5 lg:px-8">
-
-                <div class="contact-panel reveal relative overflow-hidden rounded-3xl border border-brand-400/20 bg-gradient-to-br from-brand-500/10 via-white/[0.03] to-transparent p-7 text-center sm:p-12"
-                    data-reveal>
-
-                    <div
-                        class="absolute left-1/2 top-0 h-48 w-48 -translate-x-1/2 rounded-full bg-brand-500/10 blur-3xl">
-                    </div>
-
-                    <div class="relative">
-
-                        <span class="section-kicker">
-                            06 / contato
-                        </span>
-
-                        <h2 class="mx-auto mt-4 max-w-3xl text-3xl font-black tracking-tight text-white sm:text-5xl">
-
-                            Vamos conversar sobre
-
-                            <span class="text-gradient">
-                                tecnologia?
-                            </span>
-
-                        </h2>
-
-                        <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
-
-                            Estou buscando minha primeira oportunidade profissional como Desenvolvedor PHP/Laravel
-                            Júnior ou Estagiário.
-
-                        </p>
-
-                        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-
-                            <a href="mailto:carlos.vinicius582@gmail.com"
-                                class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-500 px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-400">
-
-                                Enviar e-mail
-
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.8" aria-hidden="true">
-
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z" />
-
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4 6 8 6 8-6" />
-
-                                </svg>
-
-                            </a>
-
-                            <a href="https://github.com/carlosvinims" target="_blank" rel="noopener noreferrer"
-                                class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-brand-400/40 hover:bg-brand-400/10 hover:text-white">
-
-                                Ver GitHub
-
-                            </a>
-
-                            <a href="https://linkedin.com/in/carlosvinims" target="_blank" rel="noopener noreferrer"
-                                class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-brand-400/40 hover:bg-brand-400/10 hover:text-white">
-
-                                LinkedIn
-
-                            </a>
-
-                        </div>
-
-                        <p class="mt-7 font-mono text-xs text-slate-600">
-                            carlos.vinicius582@gmail.com
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-    <footer class="relative z-10 border-t border-white/5">
-
-        <div
-            class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 sm:flex-row sm:items-center sm:justify-between lg:px-8">
-
-            <div>
-
-                <p class="text-sm font-semibold text-slate-300">
-                    Carlos Vinicius
-                </p>
-
-                <p class="mt-1 text-xs text-slate-600">
-                    Desenvolvedor Web PHP Júnior em formação.
-                </p>
-
-            </div>
-
-            <div class="flex items-center gap-5">
-
-                <a href="https://github.com/carlosvinims" target="_blank" rel="noopener noreferrer" class="footer-link">
-                    GitHub
-                </a>
-
-                <a href="https://linkedin.com/in/carlosvinims" target="_blank" rel="noopener noreferrer"
-                    class="footer-link">
-                    LinkedIn
-                </a>
-
-                <a href="mailto:carlos.vinicius582@gmail.com" class="footer-link">
-                    E-mail
-                </a>
-
-                <a href="#inicio" class="footer-link" aria-label="Voltar ao início">
-                    ↑
-                </a>
-
-            </div>
-        </div>
-
-        <div class="border-t border-white/5 py-4 text-center">
-
-            <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-700">
-
-                © <span id="current-year"></span> Carlos Vinicius
-
+            <h1 id="hero-title" class="hero-in mt-6 font-pixel font-bold uppercase leading-[0.95] text-cream" style="--d:120ms">
+              <span class="block text-[clamp(2.75rem,11vw,6.5rem)]">Carlos</span>
+              <span class="block text-[clamp(2.75rem,11vw,6.5rem)]">Vinicius</span>
+            </h1>
+
+            <p class="hero-in mt-6 font-mono text-sm text-cream sm:text-base" style="--d:240ms">
+              Desenvolvedor Web PHP Júnior
             </p>
 
+            <p class="hero-in mt-4 max-w-xl text-base leading-relaxed text-mist sm:text-lg" style="--d:340ms">
+              Estudante de Desenvolvimento de Sistemas, com foco em PHP, Laravel e aplicações web. Busco minha primeira oportunidade como Desenvolvedor PHP Júnior ou Estagiário.
+            </p>
+
+            <div class="hero-in mt-8 flex flex-wrap gap-3" style="--d:440ms">
+              <a href="#projetos" class="btn-primary">Ver projetos</a>
+              <a href="#contato" class="btn-ghost">Entrar em contato</a>
+            </div>
+
+            <p class="hero-in mt-8 flex items-center gap-2 font-mono text-xs text-mist" style="--d:520ms">
+              <svg class="h-4 w-4 text-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Quatis, Rio de Janeiro, Brasil
+            </p>
+          </div>
+
+          <!-- Foto + terminal -->
+          <div class="hero-in lg:col-span-5" style="--d:300ms">
+            <div class="relative mx-auto max-w-sm lg:max-w-none">
+              <figure class="photo-frame relative aspect-[4/5] overflow-hidden rounded-2xl border border-moss/70 bg-graphite">
+                <!-- Placeholder (aparece enquanto perfil.jpg não existir) -->
+                <div class="photo-placeholder absolute inset-0 grid place-items-center text-center" aria-hidden="true">
+                  <div>
+                    <p class="font-pixel text-6xl text-cream/80">CV</p>
+                    <p class="mt-3 font-mono text-[11px] text-stone">PLACEHOLDER<br />assets/images/perfil.jpg</p>
+                  </div>
+                </div>
+                <!-- Foto real: coloque o arquivo em assets/images/perfil.jpg -->
+                <img src="assets/images/perfil.jpg" alt="Foto de Carlos Vinicius" width="800" height="1000" loading="eager" class="relative h-full w-full object-cover" onerror="this.hidden=true" />
+                <div class="photo-scan" aria-hidden="true"></div>
+              </figure>
+
+              <div class="glass terminal absolute -bottom-6 left-3 right-3 rounded-xl border border-moss/70 p-4 font-mono text-[11px] leading-relaxed sm:left-auto sm:w-[19rem] sm:text-xs lg:-left-8 lg:right-auto" role="img" aria-label="Terminal decorativo: perfil de Carlos Vinicius, foco em PHP e Laravel, procurando primeira oportunidade">
+                <div class="mb-2 flex items-center gap-1.5" aria-hidden="true">
+                  <span class="h-2 w-2 rounded-full bg-moss"></span><span class="h-2 w-2 rounded-full bg-moss"></span><span class="h-2 w-2 rounded-full bg-moss"></span>
+                  <span class="ml-2 text-stone">~/carlos</span>
+                </div>
+                <p class="term-line text-cream" style="--i:0">$ whoami</p>
+                <p class="term-line" style="--i:1">carlos-vinicius</p>
+                <p class="term-line text-cream" style="--i:2">$ stack --main</p>
+                <p class="term-line" style="--i:3">php · laravel · mysql</p>
+                <p class="term-line text-cream" style="--i:4">$ status<span class="cursor" aria-hidden="true"></span></p>
+              </div>
+            </div>
+          </div>
         </div>
-    </footer>
 
-    <!-- JavaScript -->
-    <script src="assets/js/main.js"></script>
+        <!-- Faixa creme (referência: barra de ícones da galeria) -->
+        <div class="reveal mt-20 sm:mt-24" style="--d:0ms">
+          <ul class="tech-strip flex flex-wrap items-center justify-between gap-x-4 gap-y-3 rounded-xl bg-cream px-5 py-3.5 font-mono text-xs font-medium text-ink sm:px-8 sm:text-sm" aria-label="Tecnologias principais">
+            <li class="strip-item">PHP</li>
+            <li class="strip-item">Laravel</li>
+            <li class="strip-item">JavaScript</li>
+            <li class="strip-item">MySQL</li>
+            <li class="strip-item">HTML5 / CSS3</li>
+            <li class="strip-item">Git / GitHub</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
+    <!-- ============ SOBRE ============ -->
+    <section id="sobre" class="section" aria-labelledby="sobre-title">
+      <div class="mx-auto max-w-6xl">
+        <div class="section-head reveal">
+          <h2 id="sobre-title" class="section-title">Sobre mim</h2>
+          <span class="tech-line" aria-hidden="true"></span>
+        </div>
+
+        <div class="mt-10 grid gap-8 lg:grid-cols-12">
+          <div class="space-y-5 text-base leading-relaxed sm:text-lg lg:col-span-7">
+            <p class="reveal" style="--d:0ms">
+              Estudo Desenvolvimento de Sistemas na <strong class="font-semibold text-cream">Firjan SENAI Resende</strong> e construo minha base prática com PHP e Laravel: aplicações web, CRUDs, banco de dados, consumo de APIs e interfaces responsivas, sempre organizadas em MVC.
+            </p>
+            <p class="reveal" style="--d:80ms">
+              Tenho prática com migrations, seeders, Eloquent, rotas, controllers e views Blade, além de modelagem de dados (DER) e conceitos de arquitetura como MVC e MVP.
+            </p>
+            <p class="reveal" style="--d:160ms">
+              Meu GitHub reúne projetos acadêmicos e próprios que mostram minha evolução, dos fundamentos de desenvolvimento web até aplicações mais completas com Laravel.
+            </p>
+
+            <!-- Experiência profissional (informação real: ainda não possui) -->
+            <div class="reveal glass terminal rounded-xl border border-moss/60 p-4 font-mono text-xs sm:text-sm" style="--d:240ms">
+              <p class="text-stone">// experiência profissional</p>
+              <p class="mt-1 text-cream">formal<span class="text-mist"> = </span>null<span class="text-mist">;</span></p>
+              <p class="mt-1 text-mist">objetivo<span class="text-stone"> = </span>"primeira oportunidade como Júnior ou Estagiário";</p>
+              <p class="mt-1 text-mist">prática<span class="text-stone"> = </span>"demonstrada nos projetos abaixo";</p>
+            </div>
+          </div>
+
+          <!-- Painel lateral -->
+          <aside class="lg:col-span-5" aria-label="Resumo">
+            <dl class="grid grid-cols-2 gap-3">
+              <div class="card card-hover reveal p-4" style="--d:0ms">
+                <dt class="font-mono text-xs text-stone">projetos</dt>
+                <dd class="mt-1 font-pixel text-4xl text-cream">4</dd>
+              </div>
+              <div class="card card-hover reveal p-4" style="--d:80ms">
+                <dt class="font-mono text-xs text-stone">certificados</dt>
+                <dd class="mt-1 font-pixel text-4xl text-cream">4</dd>
+              </div>
+              <div class="card card-hover reveal p-4" style="--d:160ms">
+                <dt class="font-mono text-xs text-stone">horas de cursos</dt>
+                <dd class="mt-1 font-pixel text-4xl text-cream">42h</dd>
+              </div>
+              <div class="card card-hover reveal p-4" style="--d:240ms">
+                <dt class="font-mono text-xs text-stone">foco</dt>
+                <dd class="mt-2 text-sm font-semibold text-cream">PHP e Laravel</dd>
+              </div>
+              <div class="card card-hover reveal col-span-2 p-4" style="--d:320ms">
+                <dt class="font-mono text-xs text-stone">estudando agora</dt>
+                <dd class="mt-2 text-sm font-semibold text-cream">Técnico em Desenvolvimento de Sistemas</dd>
+                <dd class="mt-1 text-sm text-mist">Firjan SENAI Resende · 2026 a 2027</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJETOS ============ -->
+    <section id="projetos" class="section" aria-labelledby="projetos-title">
+      <div class="mx-auto max-w-6xl">
+        <div class="section-head reveal">
+          <h2 id="projetos-title" class="section-title">Projetos</h2>
+          <span class="tech-line" aria-hidden="true"></span>
+        </div>
+        <p class="reveal mt-4 max-w-2xl text-mist" style="--d:80ms">
+          Um hackathon e três aplicações Laravel que mostram prática com MVC, banco de dados e organização de código.
+        </p>
+
+        <!-- Filtros -->
+        <div class="reveal mt-8 flex flex-wrap gap-2" role="group" aria-label="Filtrar projetos" style="--d:140ms">
+          <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">Todos</button>
+          <button type="button" class="filter-btn" data-filter="hackathon" aria-pressed="false">Hackathon</button>
+          <button type="button" class="filter-btn" data-filter="laravel" aria-pressed="false">Laravel</button>
+        </div>
+
+        <div id="project-grid" class="mt-8 grid gap-5 lg:grid-cols-6">
+
+          <!-- Projeto 1: Reciclo / Hackathon (destaque) -->
+          <article class="card card-hover project reveal lg:col-span-6" data-category="hackathon" style="--d:0ms">
+            <div class="grid gap-0 lg:grid-cols-5">
+              <div class="p-6 sm:p-8 lg:col-span-3">
+                <div class="flex flex-wrap items-center gap-2 font-mono text-xs">
+                  <span class="tag tag-solid">TOP 3</span>
+                  <span class="tag">Hackathon Desafio Inova SulFlu 2026</span>
+                </div>
+                <h3 class="mt-4 text-2xl font-bold text-cream sm:text-3xl">Reciclo</h3>
+                <p class="mt-1 font-mono text-sm text-cream/90">"O que sobra para você pode valer para alguém."</p>
+                <p class="mt-4 leading-relaxed text-mist">
+                  Proposta de plataforma digital para economia circular, conectando pequenos negócios, catadores, cooperativas e compradores de materiais recicláveis. A solução facilita a divulgação de resíduos, organiza as coletas e a destinação dos materiais e explora o uso de inteligência artificial.
+                </p>
+                <p class="mt-3 text-sm leading-relaxed text-mist">
+                  Participei da proposta, da estruturação da solução e da preparação do pitch. A equipe ficou entre as três melhores do evento, e o evento incluiu mentorias e capacitação do Sebrae.
+                </p>
+
+                <ul class="mt-5 flex flex-wrap gap-2" aria-label="Competências desenvolvidas">
+                  <li class="chip">Trabalho em equipe</li>
+                  <li class="chip">Pitch</li>
+                  <li class="chip">Prototipagem</li>
+                  <li class="chip">Inovação</li>
+                  <li class="chip">Economia circular</li>
+                  <li class="chip">IA aplicada</li>
+                </ul>
+
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <a class="btn-primary" href="https://carlosvinims.github.io/reciclo/" target="_blank" rel="noopener noreferrer">Conhecer projeto <span class="sr-only">(abre em nova aba)</span>
+                    <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+                  </a>
+                  <a class="btn-ghost" href="https://www.even3.com.br/e/hackaton-desafio-inova-sulflu-611258" target="_blank" rel="noopener noreferrer">Página do hackathon <span class="sr-only">(abre em nova aba)</span></a>
+                </div>
+              </div>
+
+              <!-- Painel visual (sem imagem inventada: composição em HTML/CSS) -->
+              <div class="project-visual relative hidden min-h-[16rem] border-l border-moss/50 lg:col-span-2 lg:block" aria-hidden="true">
+                <div class="absolute inset-0 grid place-items-center p-6">
+                  <div class="w-full rounded-xl border border-moss/60 bg-ink/70 p-4 font-mono text-xs leading-relaxed">
+                    <p class="text-stone">reciclo/</p>
+                    <p class="text-cream">├─ negócios</p>
+                    <p class="text-cream">├─ catadores</p>
+                    <p class="text-cream">├─ cooperativas</p>
+                    <p class="text-cream">└─ compradores</p>
+                    <p class="mt-3 border-t border-moss/50 pt-3 text-mist">rank: top-3<span class="cursor"></span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projeto 2: Finance Control -->
+          <article class="card card-hover project reveal flex flex-col lg:col-span-2" data-category="laravel" style="--d:0ms">
+            <div class="project-visual border-b border-moss/50 p-4 font-mono text-[11px] leading-relaxed" aria-hidden="true">
+              <p class="text-stone">finance-control/</p>
+              <p class="text-cream">├─ app/ &nbsp;database/</p>
+              <p class="text-cream">├─ resources/ &nbsp;routes/</p>
+              <p class="text-cream">└─ tests/</p>
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                <span class="tag">Em desenvolvimento</span>
+              </div>
+              <h3 class="mt-3 text-xl font-bold text-cream">Finance Control</h3>
+              <p class="mt-2 text-sm leading-relaxed text-mist">
+                Aplicação de controle financeiro em Laravel que centraliza e organiza informações financeiras. Usa MVC, banco de dados, rotas, controllers, models e views.
+              </p>
+              <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Tecnologias">
+                <li class="chip">PHP</li><li class="chip">Laravel</li><li class="chip">Blade</li><li class="chip">MySQL/SQLite</li><li class="chip">Bootstrap</li><li class="chip">Tailwind</li><li class="chip">Vite</li>
+              </ul>
+              <div class="mt-auto pt-5">
+                <a class="link-arrow" href="https://github.com/carlosvinims/finance-control" target="_blank" rel="noopener noreferrer">Ver no GitHub <span class="sr-only">(abre em nova aba)</span>
+                  <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projeto 3: Catálogo de Produtos -->
+          <article class="card card-hover project reveal flex flex-col lg:col-span-2" data-category="laravel" style="--d:100ms">
+            <div class="project-visual border-b border-moss/50 p-4 font-mono text-[11px] leading-relaxed" aria-hidden="true">
+              <p class="text-stone">catalogo-produtos/</p>
+              <p class="text-cream">├─ app/ &nbsp;database/</p>
+              <p class="text-cream">├─ resources/ &nbsp;routes/</p>
+              <p class="text-cream">└─ tests/</p>
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                <span class="tag">Estudo · concluído</span>
+              </div>
+              <h3 class="mt-3 text-xl font-bold text-cream">Catálogo de Produtos</h3>
+              <p class="mt-2 text-sm leading-relaxed text-mist">
+                Aplicação Laravel para cadastro, gerenciamento e apresentação de produtos. Foi o projeto de prática de CRUD, organização de dados e arquitetura padrão do framework.
+              </p>
+              <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Tecnologias">
+                <li class="chip">PHP</li><li class="chip">Laravel</li><li class="chip">Blade</li><li class="chip">MySQL</li><li class="chip">Bootstrap</li><li class="chip">Vite</li>
+              </ul>
+              <div class="mt-auto pt-5">
+                <a class="link-arrow" href="https://github.com/carlosvinims/catalogo-produtos_laravel" target="_blank" rel="noopener noreferrer">Ver no GitHub <span class="sr-only">(abre em nova aba)</span>
+                  <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projeto 4: Monitor de Cotações -->
+          <article class="card card-hover project reveal flex flex-col lg:col-span-2" data-category="laravel" style="--d:200ms">
+            <div class="project-visual border-b border-moss/50 p-4 font-mono text-[11px] leading-relaxed" aria-hidden="true">
+              <p class="text-stone">monitor-cotacoes/</p>
+              <p class="text-cream">├─ php 8.3</p>
+              <p class="text-cream">├─ laravel 13</p>
+              <p class="text-cream">└─ mvc</p>
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                <span class="tag">Em desenvolvimento</span>
+              </div>
+              <h3 class="mt-3 text-xl font-bold text-cream">Monitor de Cotações</h3>
+              <p class="mt-2 text-sm leading-relaxed text-mist">
+                Aplicação Laravel de estudo que organiza e apresenta cotações de forma centralizada, explorando MVC, rotas, controllers, views e integração com dados.
+              </p>
+              <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Tecnologias">
+                <li class="chip">PHP</li><li class="chip">Laravel</li><li class="chip">Blade</li><li class="chip">Composer</li><li class="chip">Vite</li>
+              </ul>
+              <div class="mt-auto pt-5">
+                <a class="link-arrow" href="https://github.com/carlosvinims/monitor-cotacoes-laravel-" target="_blank" rel="noopener noreferrer">Ver no GitHub <span class="sr-only">(abre em nova aba)</span>
+                  <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="reveal mt-8 flex justify-end">
+          <a class="link-arrow" href="https://github.com/carlosvinims" target="_blank" rel="noopener noreferrer">Ver todos os repositórios <span class="sr-only">(abre em nova aba)</span>
+            <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TECNOLOGIAS E HABILIDADES ============ -->
+    <section id="tecnologias" class="section" aria-labelledby="tec-title">
+      <div class="mx-auto max-w-6xl">
+        <div class="section-head reveal">
+          <h2 id="tec-title" class="section-title">Tecnologias</h2>
+          <span class="tech-line" aria-hidden="true"></span>
+        </div>
+
+        <!-- Legenda -->
+        <div class="reveal mt-5 flex flex-wrap items-center gap-4 font-mono text-xs text-mist" style="--d:80ms">
+          <span class="flex items-center gap-2"><span class="chip chip-main">Principal</span> conhecimentos principais, em desenvolvimento</span>
+          <span class="flex items-center gap-2"><span class="chip">Demais</span> complementares</span>
+        </div>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
+          <div class="card card-hover reveal p-5 lg:col-span-2" style="--d:0ms">
+            <h3 class="font-mono text-sm text-cream">linguagens</h3>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              <li class="chip chip-main">PHP</li><li class="chip chip-main">JavaScript</li><li class="chip chip-main">HTML5</li><li class="chip chip-main">CSS3</li><li class="chip">SQL</li>
+            </ul>
+          </div>
+          <div class="card card-hover reveal p-5 lg:col-span-2" style="--d:80ms">
+            <h3 class="font-mono text-sm text-cream">frameworks</h3>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              <li class="chip chip-main">Laravel</li><li class="chip chip-main">Bootstrap</li><li class="chip">Blade</li>
+            </ul>
+          </div>
+          <div class="card card-hover reveal p-5 lg:col-span-2" style="--d:160ms">
+            <h3 class="font-mono text-sm text-cream">banco de dados</h3>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              <li class="chip chip-main">MySQL</li><li class="chip">SQLite</li><li class="chip">Banco relacional</li><li class="chip">Modelagem</li><li class="chip">DER</li>
+            </ul>
+          </div>
+          <div class="card card-hover reveal p-5 lg:col-span-3" style="--d:0ms">
+            <h3 class="font-mono text-sm text-cream">ferramentas</h3>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              <li class="chip chip-main">Git</li><li class="chip chip-main">GitHub</li><li class="chip">Composer</li><li class="chip">NPM</li><li class="chip">Vite</li><li class="chip">Laravel Artisan</li><li class="chip">VS Code</li>
+            </ul>
+          </div>
+          <div class="card card-hover reveal p-5 sm:col-span-2 lg:col-span-3" style="--d:80ms">
+            <h3 class="font-mono text-sm text-cream">conceitos</h3>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              <li class="chip">MVC</li><li class="chip">MVP</li><li class="chip">CRUD</li><li class="chip">APIs</li><li class="chip">Consumo de APIs</li><li class="chip">Eloquent ORM</li><li class="chip">Migrations</li><li class="chip">Seeders</li><li class="chip">Rotas</li><li class="chip">Controllers</li><li class="chip">Views Blade</li><li class="chip">Responsividade</li><li class="chip">Componentização</li><li class="chip">Versionamento</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Habilidades -->
+        <div id="habilidades" class="mt-14 grid gap-5 lg:grid-cols-2">
+          <div class="card reveal p-6" style="--d:0ms">
+            <h3 class="text-lg font-bold text-cream">Habilidades técnicas</h3>
+            <ul class="check-list mt-4 grid gap-2 text-sm sm:grid-cols-2">
+              <li>Desenvolvimento de aplicações web</li>
+              <li>CRUDs</li>
+              <li>Estruturação de aplicações PHP</li>
+              <li>Desenvolvimento com Laravel</li>
+              <li>Migrations</li>
+              <li>Modelagem e relacionamento de dados</li>
+              <li>Interfaces responsivas</li>
+              <li>Consumo de APIs</li>
+              <li>Organização de código</li>
+              <li>Versionamento com Git/GitHub</li>
+              <li>Manutenção e evolução de projetos</li>
+            </ul>
+          </div>
+          <div class="card reveal p-6" style="--d:100ms">
+            <h3 class="text-lg font-bold text-cream">Habilidades profissionais</h3>
+            <ul class="check-list mt-4 grid gap-2 text-sm sm:grid-cols-2">
+              <li>Facilidade para aprender</li>
+              <li>Raciocínio lógico</li>
+              <li>Resolução de problemas</li>
+              <li>Organização</li>
+              <li>Trabalho em equipe</li>
+              <li>Aprendizado contínuo</li>
+              <li>Pesquisa e solução prática de problemas</li>
+              <li>Adaptabilidade</li>
+              <li>Interesse em desenvolvimento de software</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FORMAÇÃO ============ -->
+    <section id="formacao" class="section" aria-labelledby="formacao-title">
+      <div class="mx-auto max-w-6xl">
+        <div class="section-head reveal">
+          <h2 id="formacao-title" class="section-title">Formação</h2>
+          <span class="tech-line" aria-hidden="true"></span>
+        </div>
+
+        <!-- Curso técnico -->
+        <article class="card card-hover reveal mt-10 p-6 sm:p-8" style="--d:0ms">
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <p class="font-mono text-xs text-stone">2026 a 2027</p>
+              <h3 class="mt-1 text-xl font-bold text-cream sm:text-2xl">Técnico em Desenvolvimento de Sistemas</h3>
+              <p class="mt-1 text-mist">Firjan SENAI Resende</p>
+            </div>
+            <span class="tag"><span class="status-dot" aria-hidden="true"></span>EM ANDAMENTO</span>
+          </div>
+          <p class="mt-4 max-w-3xl leading-relaxed text-mist">
+            Formação técnica em desenvolvimento de software, análise de sistemas, banco de dados e desenvolvimento web, com metodologias ágeis e modelagem de dados.
+          </p>
+          <ul class="mt-5 flex flex-wrap gap-2" aria-label="Conteúdos já estudados">
+            <li class="chip">Lógica de programação</li><li class="chip">HTML5</li><li class="chip">CSS3</li><li class="chip">JavaScript</li><li class="chip">PHP</li><li class="chip">MySQL</li><li class="chip">DER</li><li class="chip">MVC e MVP</li><li class="chip">Metodologias ágeis</li>
+          </ul>
+        </article>
+
+        <!-- Certificados -->
+        <h3 class="reveal mt-14 text-lg font-bold text-cream">Certificados Alura</h3>
+        <p class="reveal mt-1 text-sm text-mist" style="--d:60ms">Certificados oficiais, em ordem do mais recente ao mais antigo.</p>
+
+        <ol class="timeline mt-8 space-y-5">
+          <li class="timeline-item reveal" style="--d:0ms">
+            <article class="card card-hover p-5 sm:p-6">
+              <div class="flex flex-wrap items-center gap-2 font-mono text-xs text-stone">
+                <span>29 e 30 de setembro de 2026</span><span aria-hidden="true">/</span><span>8 horas</span>
+              </div>
+              <h4 class="mt-2 text-lg font-bold text-cream">Laravel: validando formulários, usando sessões e definindo relacionamentos</h4>
+              <p class="mt-2 text-sm leading-relaxed text-mist">Aprofundamento no Laravel: validação de dados de formulários, gerenciamento de sessões e relacionamentos entre entidades.</p>
+              <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Competências">
+                <li class="chip">PHP e Laravel</li><li class="chip">Validação de formulários</li><li class="chip">Sessões</li><li class="chip">Relacionamentos entre modelos</li><li class="chip">Aplicações web</li>
+              </ul>
+              <a class="link-arrow mt-5" href="https://cursos.alura.com.br/formalCertificate/5e7f6780-3de0-4a95-9839-8f4ba3d11712" target="_blank" rel="noopener noreferrer">Ver certificado <span class="sr-only">(abre em nova aba)</span>
+                <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </article>
+          </li>
+
+          <li class="timeline-item reveal" style="--d:0ms">
+            <article class="card card-hover p-5 sm:p-6">
+              <div class="flex flex-wrap items-center gap-2 font-mono text-xs text-stone">
+                <span>12 de junho de 2026</span><span aria-hidden="true">/</span><span>6 horas</span>
+              </div>
+              <h4 class="mt-2 text-lg font-bold text-cream">HTML e CSS: formulários, SEO e acessibilidade</h4>
+              <p class="mt-2 text-sm leading-relaxed text-mist">Construção de formulários, usabilidade, validação de campos, acessibilidade digital e SEO técnico básico.</p>
+              <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Competências">
+                <li class="chip">Formulários HTML</li><li class="chip">Usabilidade</li><li class="chip">Acessibilidade</li><li class="chip">SEO básico</li><li class="chip">Experiência do usuário</li>
+              </ul>
+              <a class="link-arrow mt-5" href="https://cursos.alura.com.br/certificate/d9f292b4-440f-4ed9-9a9c-4dd4db39751c?lang=pt_BR" target="_blank" rel="noopener noreferrer">Ver certificado <span class="sr-only">(abre em nova aba)</span>
+                <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </article>
+          </li>
+
+          <li class="timeline-item reveal" style="--d:0ms">
+            <article class="card card-hover p-5 sm:p-6">
+              <div class="flex flex-wrap items-center gap-2 font-mono text-xs text-stone">
+                <span>8 de junho de 2026</span><span aria-hidden="true">/</span><span>20 horas</span>
+              </div>
+              <h4 class="mt-2 text-lg font-bold text-cream">HTML e CSS: ambiente, estrutura e estilo</h4>
+              <p class="mt-2 text-sm leading-relaxed text-mist">Fundamentos de front-end: ambiente de desenvolvimento, HTML semântico, CSS, layout, Git e GitHub e publicação de sites.</p>
+              <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Competências">
+                <li class="chip">HTML5</li><li class="chip">CSS3</li><li class="chip">HTML semântico</li><li class="chip">Layout</li><li class="chip">Git e GitHub</li><li class="chip">Publicação de sites</li>
+              </ul>
+              <a class="link-arrow mt-5" href="https://cursos.alura.com.br/certificate/c3268dc0-8a2b-403b-ae61-1cb2b3a5b1d4?lang=pt_BR" target="_blank" rel="noopener noreferrer">Ver certificado <span class="sr-only">(abre em nova aba)</span>
+                <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </article>
+          </li>
+
+          <li class="timeline-item reveal" style="--d:0ms">
+            <article class="card card-hover p-5 sm:p-6">
+              <div class="flex flex-wrap items-center gap-2 font-mono text-xs text-stone">
+                <span>25 de maio de 2026</span><span aria-hidden="true">/</span><span>8 horas</span>
+              </div>
+              <h4 class="mt-2 text-lg font-bold text-cream">Internet: entendendo os fundamentos da web</h4>
+              <p class="mt-2 text-sm leading-relaxed text-mist">Funcionamento da web, comunicação cliente-servidor, representação de dados, evolução das tecnologias e áreas do desenvolvimento de software.</p>
+              <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Competências">
+                <li class="chip">Fundamentos da internet</li><li class="chip">Cliente-servidor</li><li class="chip">Representação de dados</li><li class="chip">Evolução da web</li>
+              </ul>
+              <a class="link-arrow mt-5" href="https://cursos.alura.com.br/certificate/6698d605-ff55-4d1b-a7a7-0a043328c052?lang=pt_BR" target="_blank" rel="noopener noreferrer">Ver certificado <span class="sr-only">(abre em nova aba)</span>
+                <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ CONTATO ============ -->
+    <section id="contato" class="section pb-24" aria-labelledby="contato-title">
+      <div class="mx-auto max-w-6xl">
+        <div class="contact-panel reveal relative overflow-hidden rounded-2xl border border-moss/70 bg-graphite/80 p-6 sm:p-10 lg:p-14">
+          <div class="relative grid gap-10 lg:grid-cols-12 lg:items-end">
+            <div class="lg:col-span-7">
+              <p class="font-mono text-xs text-stone">STATUS: AVAILABLE</p>
+              <h2 id="contato-title" class="mt-3 font-pixel text-4xl font-bold uppercase leading-none text-cream sm:text-6xl">Vamos conversar?</h2>
+              <p class="mt-5 max-w-lg leading-relaxed text-mist">
+                Estou em busca da primeira oportunidade como Desenvolvedor PHP/Laravel Júnior ou Estagiário. Escreva para mim ou chame no LinkedIn.
+              </p>
+              <div class="mt-7 flex flex-wrap gap-3">
+                <a class="btn-primary" href="mailto:carlos.vinicius582@gmail.com">Enviar e-mail</a>
+                <button type="button" id="copy-email" class="btn-ghost" data-email="carlos.vinicius582@gmail.com">Copiar e-mail</button>
+              </div>
+              <p id="copy-feedback" class="mt-3 min-h-[1.25rem] font-mono text-xs text-cream" role="status" aria-live="polite"></p>
+            </div>
+
+            <ul class="grid gap-3 lg:col-span-5">
+              <li>
+                <a class="contact-link" href="mailto:carlos.vinicius582@gmail.com">
+                  <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span class="min-w-0"><span class="block font-mono text-xs text-stone">e-mail</span><span class="block truncate text-sm text-cream">carlos.vinicius582@gmail.com</span></span>
+                </a>
+              </li>
+              <li>
+                <a class="contact-link" href="https://github.com/carlosvinims" target="_blank" rel="noopener noreferrer">
+                  <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                  <span class="min-w-0"><span class="block font-mono text-xs text-stone">github</span><span class="block truncate text-sm text-cream">github.com/carlosvinims</span></span>
+                  <span class="sr-only">(abre em nova aba)</span>
+                </a>
+              </li>
+              <li>
+                <a class="contact-link" href="https://www.linkedin.com/in/carlosvinims" target="_blank" rel="noopener noreferrer">
+                  <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span class="min-w-0"><span class="block font-mono text-xs text-stone">linkedin</span><span class="block truncate text-sm text-cream">linkedin.com/in/carlosvinims</span></span>
+                  <span class="sr-only">(abre em nova aba)</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="border-t border-moss/40 px-4 py-8 sm:px-6">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 text-center font-mono text-xs text-stone sm:flex-row sm:text-left">
+      <p>&copy; <span id="year">2026</span> Carlos Vinicius Moreira da Silva</p>
+      <p>Quatis, RJ · Brasil</p>
+    </div>
+  </footer>
+
+  <!-- Voltar ao topo -->
+  <button id="back-to-top" type="button" class="back-top" aria-label="Voltar ao topo" hidden>
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <script src="assets/js/main.js" defer></script>
 </body>
-
 </html>
