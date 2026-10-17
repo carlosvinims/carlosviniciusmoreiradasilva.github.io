@@ -1,887 +1,168 @@
-<!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
-
+<!doctype html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Marca o documento como "com JS" antes da pintura (evita flash nas animações de entrada) -->
-  <script>document.documentElement.classList.add('js');</script>
-
-  <!-- ============ SEO BÁSICO ============ -->
-  <title>Carlos Vinicius | Desenvolvedor Web PHP Júnior</title>
-  <meta name="description"
-    content="Portfólio de Carlos Vinicius, estudante de Desenvolvimento de Sistemas e desenvolvedor web em formação com foco em PHP e Laravel. Em busca da primeira oportunidade como Desenvolvedor PHP Júnior ou Estagiário." />
-  <meta name="author" content="Carlos Vinicius Moreira da Silva" />
-  <meta name="theme-color" content="#252525" />
-
-  <!-- Open Graph básico (og:url e og:image exigem URL absoluta: preencha após publicar) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="pt_BR" />
-  <meta property="og:title" content="Carlos Vinicius | Desenvolvedor Web PHP Júnior" />
-  <meta property="og:description"
-    content="Estudante de Desenvolvimento de Sistemas com foco em PHP e Laravel. Conheça meus projetos, tecnologias e formação." />
-  <!-- <meta property="og:url" content="https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/" /> -->
-  <!-- <meta property="og:image" content="https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/assets/images/perfil.jpg" /> -->
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
-
-  <!-- Fontes: Manrope (texto/títulos), JetBrains Mono (terminal/técnico), Pixelify Sans (título do hero) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&family=Pixelify+Sans:wght@500;700&display=swap"
-    rel="stylesheet" />
-
-  <!-- Tailwind CSS v3 via CDN (versão fixa, sem etapa de build) -->
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ink: '#252525',      // preto grafite (fundo principal)
-            graphite: '#30312F', // cartões e painéis
-            olive: '#474742',    // superfícies secundárias
-            moss: '#66675F',     // bordas e divisórias
-            stone: '#85867B',    // detalhes de baixo contraste (decorativo)
-            mist: '#B9BAAA',     // texto secundário com bom contraste
-            cream: '#E8E8C6',    // destaque principal
-            ivory: '#F0F0D8'     // creme claro (hover)
-          },
-          fontFamily: {
-            sans: ['Manrope', 'system-ui', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
-            pixel: ['"Pixelify Sans"', '"JetBrains Mono"', 'monospace']
-          }
-        }
-      }
-    };
-  </script>
-
-  <!-- CSS complementar (animações, fundo, scrollbar) -->
-  <link rel="stylesheet" href="assets/css/style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carlos Vinicius | Desenvolvedor Web PHP Júnior</title>
+<meta name="description" content="Portfólio de Carlos Vinicius, estudante de Desenvolvimento de Sistemas com foco em PHP e Laravel, em busca da primeira oportunidade como Desenvolvedor PHP Júnior ou Estagiário.">
+<meta name="author" content="Carlos Vinicius Moreira da Silva">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
-
-<body class="bg-ink font-sans text-mist antialiased selection:bg-cream selection:text-ink">
-
-  <!-- Link de atalho para teclado -->
-  <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
-
-  <!-- ============ FUNDO ANIMADO (decorativo) ============ -->
-  <div class="bg-layer" aria-hidden="true">
-    <div class="bg-grid"></div>
-    <canvas id="bg-canvas"></canvas>
-    <div class="bg-vignette"></div>
-  </div>
-
-  <!-- ============ HEADER / NAVEGAÇÃO ============ -->
-  <header class="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6">
-    <nav id="site-nav"
-      class="glass nav-shell mx-auto flex max-w-6xl items-center justify-between rounded-xl border border-moss/60 px-4 py-2.5"
-      aria-label="Navegação principal">
-      <a href="#inicio" class="flex items-center gap-2.5 rounded-md font-mono text-sm text-cream"
-        aria-label="Carlos Vinicius, ir para o início">
-        <span
-          class="grid h-8 w-8 place-items-center rounded-md border border-moss bg-graphite font-pixel text-base leading-none"></span>
-        <span class="hidden sm:inline">carlos.vinicius<span class="cursor" aria-hidden="true"></span></span>
-      </a>
-
-      <ul class="hidden items-center gap-1 md:flex">
-        <li><a class="nav-link" href="#sobre">Sobre</a></li>
-        <li><a class="nav-link" href="#projetos">Projetos</a></li>
-        <li><a class="nav-link" href="#tecnologias">Tecnologias</a></li>
-        <li><a class="nav-link" href="#formacao">Formação</a></li>
-        <li><a class="nav-link" href="#contato">Contato</a></li>
-      </ul>
-
-      <a href="#contato" class="btn-primary hidden md:inline-flex">Contato</a>
-
-      <button id="menu-toggle" type="button"
-        class="grid h-11 w-11 place-items-center rounded-lg border border-moss/70 text-cream md:hidden"
-        aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu">
-        <svg id="icon-menu" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        <svg id="icon-close" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M18 6 6 18M6 6l12 12" />
-        </svg>
-      </button>
+<body>
+<a class="skip" href="#sobre">Pular para o conteúdo</a>
+<header class="header" id="header">
+  <div class="bar">
+    <a class="logo" href="#top" aria-label="Carlos Vinicius, início"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 5l-4 14"/></svg>Carlos Vinicius</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">☰</button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#sobre">Sobre</a><a href="#projetos">Projetos</a><a href="#tecnologias">Tecnologias</a><a href="#formacao">Formação</a>
+      <a class="btn" href="#contato">Contato</a>
     </nav>
+  </div>
+</header>
 
-    <!-- Menu mobile -->
-    <div id="mobile-menu"
-      class="glass panel-in mx-auto mt-2 hidden max-w-6xl rounded-xl border border-moss/60 p-2 md:hidden">
-      <ul class="grid gap-1">
-        <li><a class="mobile-link" href="#sobre">Sobre</a></li>
-        <li><a class="mobile-link" href="#projetos">Projetos</a></li>
-        <li><a class="mobile-link" href="#tecnologias">Tecnologias</a></li>
-        <li><a class="mobile-link" href="#formacao">Formação</a></li>
-        <li><a class="mobile-link" href="#contato">Contato</a></li>
-      </ul>
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <ul class="tags hero-in" style="--d:0ms"><li>● Disponível</li><li>Quatis, RJ</li></ul>
+      <h1 class="hero-in" style="--d:120ms">Carlos Vinicius</h1>
+      <p class="role hero-in" style="--d:220ms">Desenvolvedor Web PHP Júnior</p>
+      <p class="hero-in" style="--d:320ms">Estudante de Desenvolvimento de Sistemas, com foco em PHP, Laravel e aplicações web. Busco minha primeira oportunidade como Desenvolvedor PHP Júnior ou Estagiário.</p>
+      <div class="actions hero-in" style="--d:420ms"><a class="btn" href="#projetos">Ver projetos</a><a class="btn btn--ghost" href="#contato">Entrar em contato</a></div>
     </div>
-  </header>
-
-  <main id="conteudo">
-
-    <!-- ============ HERO ============ -->
-    <section id="inicio" class="relative px-4 pb-10 pt-28 sm:px-6 sm:pt-36" aria-labelledby="hero-title">
-      <div class="mx-auto max-w-6xl">
-
-        <div class="grid items-center gap-10 lg:grid-cols-12">
-          <!-- Texto -->
-          <div class="lg:col-span-7">
-            <div class="hero-in flex flex-wrap items-center gap-2 font-mono text-xs" style="--d:0ms">
-              <span class="tag"><span class="status-dot" aria-hidden="true"></span>SYSTEM.ONLINE</span>
-              <span class="tag">STATUS: AVAILABLE</span>
-              <span class="tag">BUILD: STABLE</span>
-            </div>
-
-            <h1 id="hero-title" class="hero-in mt-6 font-pixel font-bold uppercase leading-[0.95] text-cream"
-              style="--d:120ms">
-              <span class="block text-[clamp(2.75rem,11vw,6.5rem)]">Carlos</span>
-              <span class="block text-[clamp(2.75rem,11vw,6.5rem)]">Vinicius</span>
-            </h1>
-
-            <p class="hero-in mt-6 font-mono text-sm text-cream sm:text-base" style="--d:240ms">
-              Desenvolvedor Web PHP Júnior
-            </p>
-
-            <p class="hero-in mt-4 max-w-xl text-base leading-relaxed text-mist sm:text-lg" style="--d:340ms">
-              Estudante de Desenvolvimento de Sistemas, com foco em PHP, Laravel e aplicações web. Busco minha primeira
-              oportunidade como Desenvolvedor PHP Júnior ou Estagiário.
-            </p>
-
-            <div class="hero-in mt-8 flex flex-wrap gap-3" style="--d:440ms">
-              <a href="#projetos" class="btn-primary">Ver projetos</a>
-              <a href="#contato" class="btn-ghost">Entrar em contato</a>
-            </div>
-
-            <p class="hero-in mt-8 flex items-center gap-2 font-mono text-xs text-mist" style="--d:520ms">
-              <svg class="h-4 w-4 text-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              Quatis, Rio de Janeiro, Brasil
-            </p>
-          </div>
-
-          <!-- Foto + terminal -->
-          <div class="hero-in lg:col-span-5" style="--d:300ms">
-            <div class="relative mx-auto max-w-sm lg:max-w-none">
-              <figure
-                class="photo-frame relative aspect-[4/5] overflow-hidden rounded-2xl border border-moss/70 bg-graphite">
-                <!-- Placeholder (aparece enquanto perfil.jpg não existir) -->
-                <div class="photo-placeholder absolute inset-0 grid place-items-center text-center" aria-hidden="true">
-                  <div>
-                    <p class="font-pixel text-6xl text-cream/80">CV</p>
-                    <p class="mt-3 font-mono text-[11px] text-stone">PLACEHOLDER<br />assets/images/perfil.jpg</p>
-                  </div>
-                </div>
-                <!-- Foto real: coloque o arquivo em assets/images/perfil.jpg -->
-                <img src="assets/images/perfil.jpg" alt="Foto de Carlos Vinicius" width="800" height="1000"
-                  loading="eager" class="relative h-full w-full object-cover" onerror="this.hidden=true" />
-                <div class="photo-scan" aria-hidden="true"></div>
-              </figure>
-
-              <div
-                class="glass terminal absolute -bottom-6 left-3 right-3 rounded-xl border border-moss/70 p-4 font-mono text-[11px] leading-relaxed sm:left-auto sm:w-[19rem] sm:text-xs lg:-left-8 lg:right-auto"
-                role="img"
-                aria-label="Terminal decorativo: perfil de Carlos Vinicius, foco em PHP e Laravel, procurando primeira oportunidade">
-                <div class="mb-2 flex items-center gap-1.5" aria-hidden="true">
-                  <span class="h-2 w-2 rounded-full bg-moss"></span><span
-                    class="h-2 w-2 rounded-full bg-moss"></span><span class="h-2 w-2 rounded-full bg-moss"></span>
-                  <span class="ml-2 text-stone">~/carlos</span>
-                </div>
-                <p class="term-line text-cream" style="--i:0">$ whoami</p>
-                <p class="term-line" style="--i:1">carlos-vinicius</p>
-                <p class="term-line text-cream" style="--i:2">$ stack --main</p>
-                <p class="term-line" style="--i:3">php · laravel · mysql</p>
-                <p class="term-line text-cream" style="--i:4">$ status<span class="cursor" aria-hidden="true"></span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Faixa creme (referência: barra de ícones da galeria) -->
-        <div class="reveal mt-20 sm:mt-24" style="--d:0ms">
-          <ul
-            class="tech-strip flex flex-wrap items-center justify-between gap-x-4 gap-y-3 rounded-xl bg-cream px-5 py-3.5 font-mono text-xs font-medium text-ink sm:px-8 sm:text-sm"
-            aria-label="Tecnologias principais">
-            <li class="strip-item">PHP</li>
-            <li class="strip-item">Laravel</li>
-            <li class="strip-item">JavaScript</li>
-            <li class="strip-item">MySQL</li>
-            <li class="strip-item">HTML5 / CSS3</li>
-            <li class="strip-item">Git / GitHub</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ SOBRE ============ -->
-    <section id="sobre" class="section" aria-labelledby="sobre-title">
-      <div class="mx-auto max-w-6xl">
-        <div class="section-head reveal">
-          <h2 id="sobre-title" class="section-title">Sobre mim</h2>
-          <span class="tech-line" aria-hidden="true"></span>
-        </div>
-
-        <div class="mt-10 grid gap-8 lg:grid-cols-12">
-          <div class="space-y-5 text-base leading-relaxed sm:text-lg lg:col-span-7">
-            <p class="reveal" style="--d:0ms">
-              Estudo Desenvolvimento de Sistemas na <strong class="font-semibold text-cream">Firjan SENAI
-                Resende</strong> e construo minha base prática com PHP e Laravel: aplicações web, CRUDs, banco de dados,
-              consumo de APIs e interfaces responsivas, sempre organizadas em MVC.
-            </p>
-            <p class="reveal" style="--d:80ms">
-              Tenho prática com migrations, seeders, Eloquent, rotas, controllers e views Blade, além de modelagem de
-              dados (DER) e conceitos de arquitetura como MVC e MVP.
-            </p>
-            <p class="reveal" style="--d:160ms">
-              Meu GitHub reúne projetos acadêmicos e próprios que mostram minha evolução, dos fundamentos de
-              desenvolvimento web até aplicações mais completas com Laravel.
-            </p>
-
-            <!-- Experiência profissional (informação real: ainda não possui) -->
-            <div class="reveal glass terminal rounded-xl border border-moss/60 p-4 font-mono text-xs sm:text-sm"
-              style="--d:240ms">
-              <p class="text-stone">// experiência profissional</p>
-              <p class="mt-1 text-cream">formal<span class="text-mist"> = </span>null<span class="text-mist">;</span>
-              </p>
-              <p class="mt-1 text-mist">objetivo<span class="text-stone"> = </span>"primeira oportunidade como Júnior ou
-                Estagiário";</p>
-              <p class="mt-1 text-mist">prática<span class="text-stone"> = </span>"demonstrada nos projetos abaixo";</p>
-            </div>
-          </div>
-
-          <!-- Painel lateral -->
-          <aside class="lg:col-span-5" aria-label="Resumo">
-            <dl class="grid grid-cols-2 gap-3">
-              <div class="card card-hover reveal p-4" style="--d:0ms">
-                <dt class="font-mono text-xs text-stone">projetos</dt>
-                <dd class="mt-1 font-pixel text-4xl text-cream">4</dd>
-              </div>
-              <div class="card card-hover reveal p-4" style="--d:80ms">
-                <dt class="font-mono text-xs text-stone">certificados</dt>
-                <dd class="mt-1 font-pixel text-4xl text-cream">4</dd>
-              </div>
-              <div class="card card-hover reveal p-4" style="--d:160ms">
-                <dt class="font-mono text-xs text-stone">horas de cursos</dt>
-                <dd class="mt-1 font-pixel text-4xl text-cream">50h</dd>
-              </div>
-              <div class="card card-hover reveal p-4" style="--d:240ms">
-                <dt class="font-mono text-xs text-stone">foco</dt>
-                <dd class="mt-2 text-sm font-semibold text-cream">PHP e Laravel</dd>
-              </div>
-              <div class="card card-hover reveal col-span-2 p-4" style="--d:320ms">
-                <dt class="font-mono text-xs text-stone">estudando agora</dt>
-                <dd class="mt-2 text-sm font-semibold text-cream">Técnico em Desenvolvimento de Sistemas</dd>
-                <dd class="mt-1 text-sm text-mist">Firjan SENAI Resende · 2026 a 2027</dd>
-              </div>
-            </dl>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PROJETOS ============ -->
-    <section id="projetos" class="section" aria-labelledby="projetos-title">
-      <div class="mx-auto max-w-6xl">
-        <div class="section-head reveal">
-          <h2 id="projetos-title" class="section-title">Projetos</h2>
-          <span class="tech-line" aria-hidden="true"></span>
-        </div>
-        <p class="reveal mt-4 max-w-2xl text-mist" style="--d:80ms">
-          Um hackathon e três aplicações Laravel que mostram prática com MVC, banco de dados e organização de código.
-        </p>
-
-        <!-- Filtros -->
-        <div class="reveal mt-8 flex flex-wrap gap-2" role="group" aria-label="Filtrar projetos" style="--d:140ms">
-          <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">Todos</button>
-          <button type="button" class="filter-btn" data-filter="hackathon" aria-pressed="false">Hackathon</button>
-          <button type="button" class="filter-btn" data-filter="laravel" aria-pressed="false">Laravel</button>
-        </div>
-
-        <div id="project-grid" class="mt-8 grid gap-5 lg:grid-cols-6">
-
-          <!-- Projeto 1: Reciclo / Hackathon (destaque) -->
-          <article class="card card-hover project reveal lg:col-span-6" data-category="hackathon" style="--d:0ms">
-            <div class="grid gap-0 lg:grid-cols-5">
-              <div class="p-6 sm:p-8 lg:col-span-3">
-                <div class="flex flex-wrap items-center gap-2 font-mono text-xs">
-                  <span class="tag tag-solid">TOP 3</span>
-                  <span class="tag">Hackathon Desafio Inova SulFlu 2026</span>
-                </div>
-                <h3 class="mt-4 text-2xl font-bold text-cream sm:text-3xl">Reciclo</h3>
-                <p class="mt-1 font-mono text-sm text-cream/90">"O que sobra para você pode valer para alguém."</p>
-                <p class="mt-4 leading-relaxed text-mist">
-                  Proposta de plataforma digital para economia circular, conectando pequenos negócios, catadores,
-                  cooperativas e compradores de materiais recicláveis. A solução facilita a divulgação de resíduos,
-                  organiza as coletas e a destinação dos materiais e explora o uso de inteligência artificial.
-                </p>
-                <p class="mt-3 text-sm leading-relaxed text-mist">
-                  Participei da proposta, da estruturação da solução e da preparação do pitch. A equipe ficou entre as
-                  três melhores do evento, e o evento incluiu mentorias e capacitação do Sebrae.
-                </p>
-
-                <ul class="mt-5 flex flex-wrap gap-2" aria-label="Competências desenvolvidas">
-                  <li class="chip">Trabalho em equipe</li>
-                  <li class="chip">Pitch</li>
-                  <li class="chip">Prototipagem</li>
-                  <li class="chip">Inovação</li>
-                  <li class="chip">Economia circular</li>
-                  <li class="chip">IA aplicada</li>
-                </ul>
-
-                <div class="mt-6 flex flex-wrap gap-3">
-                  <a class="btn-primary" href="https://carlosvinims.github.io/reciclo/" target="_blank"
-                    rel="noopener noreferrer">Conhecer projeto <span class="sr-only">(abre em nova aba)</span>
-                    <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M7 17 17 7M8 7h9v9" />
-                    </svg>
-                  </a>
-                  <a class="btn-ghost" href="https://www.even3.com.br/e/hackaton-desafio-inova-sulflu-611258"
-                    target="_blank" rel="noopener noreferrer">Página do hackathon <span class="sr-only">(abre em nova
-                      aba)</span></a>
-                </div>
-              </div>
-
-              <!-- Painel visual (sem imagem inventada: composição em HTML/CSS) -->
-              <div class="project-visual relative hidden min-h-[16rem] border-l border-moss/50 lg:col-span-2 lg:block"
-                aria-hidden="true">
-                <div class="absolute inset-0 grid place-items-center p-6">
-                  <div class="w-full rounded-xl border border-moss/60 bg-ink/70 p-4 font-mono text-xs leading-relaxed">
-                    <p class="text-stone">reciclo/</p>
-                    <p class="text-cream">├─ negócios</p>
-                    <p class="text-cream">├─ catadores</p>
-                    <p class="text-cream">├─ cooperativas</p>
-                    <p class="text-cream">└─ compradores</p>
-                    <p class="mt-3 border-t border-moss/50 pt-3 text-mist">rank: top-3<span class="cursor"></span></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Projeto 2: Finance Control -->
-          <article class="card card-hover project reveal flex flex-col lg:col-span-2" data-category="laravel"
-            style="--d:0ms">
-            <div class="project-visual border-b border-moss/50 p-4 font-mono text-[11px] leading-relaxed"
-              aria-hidden="true">
-              <p class="text-stone">finance-control/</p>
-              <p class="text-cream">├─ app/ &nbsp;database/</p>
-              <p class="text-cream">├─ resources/ &nbsp;routes/</p>
-              <p class="text-cream">└─ tests/</p>
-            </div>
-            <div class="flex flex-1 flex-col p-5">
-              <div class="flex flex-wrap gap-2 font-mono text-[11px]">
-                <span class="tag">Em desenvolvimento</span>
-              </div>
-              <h3 class="mt-3 text-xl font-bold text-cream">Finance Control</h3>
-              <p class="mt-2 text-sm leading-relaxed text-mist">
-                Aplicação de controle financeiro em Laravel que centraliza e organiza informações financeiras. Usa MVC,
-                banco de dados, rotas, controllers, models e views.
-              </p>
-              <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Tecnologias">
-                <li class="chip">PHP</li>
-                <li class="chip">Laravel</li>
-                <li class="chip">Blade</li>
-                <li class="chip">MySQL/SQLite</li>
-                <li class="chip">Bootstrap</li>
-                <li class="chip">Tailwind</li>
-                <li class="chip">Vite</li>
-              </ul>
-              <div class="mt-auto pt-5">
-                <a class="link-arrow" href="https://github.com/carlosvinims/finance-control" target="_blank"
-                  rel="noopener noreferrer">Ver no GitHub <span class="sr-only">(abre em nova aba)</span>
-                  <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M7 17 17 7M8 7h9v9" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Projeto 3: Catálogo de Produtos -->
-          <article class="card card-hover project reveal flex flex-col lg:col-span-2" data-category="laravel"
-            style="--d:100ms">
-            <div class="project-visual border-b border-moss/50 p-4 font-mono text-[11px] leading-relaxed"
-              aria-hidden="true">
-              <p class="text-stone">catalogo-produtos/</p>
-              <p class="text-cream">├─ app/ &nbsp;database/</p>
-              <p class="text-cream">├─ resources/ &nbsp;routes/</p>
-              <p class="text-cream">└─ tests/</p>
-            </div>
-            <div class="flex flex-1 flex-col p-5">
-              <div class="flex flex-wrap gap-2 font-mono text-[11px]">
-                <span class="tag">Estudo · concluído</span>
-              </div>
-              <h3 class="mt-3 text-xl font-bold text-cream">Catálogo de Produtos</h3>
-              <p class="mt-2 text-sm leading-relaxed text-mist">
-                Aplicação Laravel para cadastro, gerenciamento e apresentação de produtos. Foi o projeto de prática de
-                CRUD, organização de dados e arquitetura padrão do framework.
-              </p>
-              <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Tecnologias">
-                <li class="chip">PHP</li>
-                <li class="chip">Laravel</li>
-                <li class="chip">Blade</li>
-                <li class="chip">MySQL</li>
-                <li class="chip">Bootstrap</li>
-                <li class="chip">Vite</li>
-              </ul>
-              <div class="mt-auto pt-5">
-                <a class="link-arrow" href="https://github.com/carlosvinims/catalogo-produtos_laravel" target="_blank"
-                  rel="noopener noreferrer">Ver no GitHub <span class="sr-only">(abre em nova aba)</span>
-                  <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M7 17 17 7M8 7h9v9" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Projeto 4: Monitor de Cotações -->
-          <article class="card card-hover project reveal flex flex-col lg:col-span-2" data-category="laravel"
-            style="--d:200ms">
-            <div class="project-visual border-b border-moss/50 p-4 font-mono text-[11px] leading-relaxed"
-              aria-hidden="true">
-              <p class="text-stone">monitor-cotacoes/</p>
-              <p class="text-cream">├─ php 8.3</p>
-              <p class="text-cream">├─ laravel 13</p>
-              <p class="text-cream">└─ mvc</p>
-            </div>
-            <div class="flex flex-1 flex-col p-5">
-              <div class="flex flex-wrap gap-2 font-mono text-[11px]">
-                <span class="tag">Em desenvolvimento</span>
-              </div>
-              <h3 class="mt-3 text-xl font-bold text-cream">Monitor de Cotações</h3>
-              <p class="mt-2 text-sm leading-relaxed text-mist">
-                Aplicação Laravel de estudo que organiza e apresenta cotações de forma centralizada, explorando MVC,
-                rotas, controllers, views e integração com dados.
-              </p>
-              <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Tecnologias">
-                <li class="chip">PHP</li>
-                <li class="chip">Laravel</li>
-                <li class="chip">Blade</li>
-                <li class="chip">Composer</li>
-                <li class="chip">Vite</li>
-              </ul>
-              <div class="mt-auto pt-5">
-                <a class="link-arrow" href="https://github.com/carlosvinims/monitor-cotacoes-laravel-" target="_blank"
-                  rel="noopener noreferrer">Ver no GitHub <span class="sr-only">(abre em nova aba)</span>
-                  <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M7 17 17 7M8 7h9v9" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="reveal mt-8 flex justify-end">
-          <a class="link-arrow" href="https://github.com/carlosvinims" target="_blank" rel="noopener noreferrer">Ver
-            todos os repositórios <span class="sr-only">(abre em nova aba)</span>
-            <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ TECNOLOGIAS E HABILIDADES ============ -->
-    <section id="tecnologias" class="section" aria-labelledby="tec-title">
-      <div class="mx-auto max-w-6xl">
-        <div class="section-head reveal">
-          <h2 id="tec-title" class="section-title">Tecnologias</h2>
-          <span class="tech-line" aria-hidden="true"></span>
-        </div>
-
-        <!-- Legenda -->
-        <div class="reveal mt-5 flex flex-wrap items-center gap-4 font-mono text-xs text-mist" style="--d:80ms">
-          <span class="flex items-center gap-2"><span class="chip chip-main">Principal</span> conhecimentos principais,
-            em desenvolvimento</span>
-          <span class="flex items-center gap-2"><span class="chip">Demais</span> complementares</span>
-        </div>
-
-        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
-          <div class="card card-hover reveal p-5 lg:col-span-2" style="--d:0ms">
-            <h3 class="font-mono text-sm text-cream">linguagens</h3>
-            <ul class="mt-4 flex flex-wrap gap-2">
-              <li class="chip chip-main">PHP</li>
-              <li class="chip chip-main">JavaScript</li>
-              <li class="chip chip-main">HTML5</li>
-              <li class="chip chip-main">CSS3</li>
-              <li class="chip">SQL</li>
-            </ul>
-          </div>
-          <div class="card card-hover reveal p-5 lg:col-span-2" style="--d:80ms">
-            <h3 class="font-mono text-sm text-cream">frameworks</h3>
-            <ul class="mt-4 flex flex-wrap gap-2">
-              <li class="chip chip-main">Laravel</li>
-              <li class="chip chip-main">Bootstrap</li>
-              <li class="chip">Blade</li>
-            </ul>
-          </div>
-          <div class="card card-hover reveal p-5 lg:col-span-2" style="--d:160ms">
-            <h3 class="font-mono text-sm text-cream">banco de dados</h3>
-            <ul class="mt-4 flex flex-wrap gap-2">
-              <li class="chip chip-main">MySQL</li>
-              <li class="chip">SQLite</li>
-              <li class="chip">Banco relacional</li>
-              <li class="chip">Modelagem</li>
-              <li class="chip">DER</li>
-            </ul>
-          </div>
-          <div class="card card-hover reveal p-5 lg:col-span-3" style="--d:0ms">
-            <h3 class="font-mono text-sm text-cream">ferramentas</h3>
-            <ul class="mt-4 flex flex-wrap gap-2">
-              <li class="chip chip-main">Git</li>
-              <li class="chip chip-main">GitHub</li>
-              <li class="chip">Composer</li>
-              <li class="chip">NPM</li>
-              <li class="chip">Vite</li>
-              <li class="chip">Laravel Artisan</li>
-              <li class="chip">VS Code</li>
-            </ul>
-          </div>
-          <div class="card card-hover reveal p-5 sm:col-span-2 lg:col-span-3" style="--d:80ms">
-            <h3 class="font-mono text-sm text-cream">conceitos</h3>
-            <ul class="mt-4 flex flex-wrap gap-2">
-              <li class="chip">MVC</li>
-              <li class="chip">MVP</li>
-              <li class="chip">CRUD</li>
-              <li class="chip">APIs</li>
-              <li class="chip">Consumo de APIs</li>
-              <li class="chip">Eloquent ORM</li>
-              <li class="chip">Migrations</li>
-              <li class="chip">Seeders</li>
-              <li class="chip">Rotas</li>
-              <li class="chip">Controllers</li>
-              <li class="chip">Views Blade</li>
-              <li class="chip">Responsividade</li>
-              <li class="chip">Componentização</li>
-              <li class="chip">Versionamento</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Habilidades -->
-        <div id="habilidades" class="mt-14 grid gap-5 lg:grid-cols-2">
-          <div class="card reveal p-6" style="--d:0ms">
-            <h3 class="text-lg font-bold text-cream">Habilidades técnicas</h3>
-            <ul class="check-list mt-4 grid gap-2 text-sm sm:grid-cols-2">
-              <li>Desenvolvimento de aplicações web</li>
-              <li>CRUDs</li>
-              <li>Estruturação de aplicações PHP</li>
-              <li>Desenvolvimento com Laravel</li>
-              <li>Migrations</li>
-              <li>Modelagem e relacionamento de dados</li>
-              <li>Interfaces responsivas</li>
-              <li>Consumo de APIs</li>
-              <li>Organização de código</li>
-              <li>Versionamento com Git/GitHub</li>
-              <li>Manutenção e evolução de projetos</li>
-            </ul>
-          </div>
-          <div class="card reveal p-6" style="--d:100ms">
-            <h3 class="text-lg font-bold text-cream">Habilidades profissionais</h3>
-            <ul class="check-list mt-4 grid gap-2 text-sm sm:grid-cols-2">
-              <li>Facilidade para aprender</li>
-              <li>Raciocínio lógico</li>
-              <li>Resolução de problemas</li>
-              <li>Organização</li>
-              <li>Trabalho em equipe</li>
-              <li>Aprendizado contínuo</li>
-              <li>Pesquisa e solução prática de problemas</li>
-              <li>Adaptabilidade</li>
-              <li>Interesse em desenvolvimento de software</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ FORMAÇÃO ============ -->
-    <section id="formacao" class="section" aria-labelledby="formacao-title">
-      <div class="mx-auto max-w-6xl">
-        <div class="section-head reveal">
-          <h2 id="formacao-title" class="section-title">Formação</h2>
-          <span class="tech-line" aria-hidden="true"></span>
-        </div>
-
-        <!-- Curso técnico -->
-        <article class="card card-hover reveal mt-10 p-6 sm:p-8" style="--d:0ms">
-          <div class="flex flex-wrap items-start justify-between gap-3">
-            <div>
-              <p class="font-mono text-xs text-stone">2026 a 2027</p>
-              <h3 class="mt-1 text-xl font-bold text-cream sm:text-2xl">Técnico em Desenvolvimento de Sistemas</h3>
-              <p class="mt-1 text-mist">Firjan SENAI Resende</p>
-            </div>
-            <span class="tag"><span class="status-dot" aria-hidden="true"></span>EM ANDAMENTO</span>
-          </div>
-          <p class="mt-4 max-w-3xl leading-relaxed text-mist">
-            Formação técnica em desenvolvimento de software, análise de sistemas, banco de dados e desenvolvimento web,
-            com metodologias ágeis e modelagem de dados.
-          </p>
-          <ul class="mt-5 flex flex-wrap gap-2" aria-label="Conteúdos já estudados">
-            <li class="chip">Lógica de programação</li>
-            <li class="chip">HTML5</li>
-            <li class="chip">CSS3</li>
-            <li class="chip">JavaScript</li>
-            <li class="chip">PHP</li>
-            <li class="chip">MySQL</li>
-            <li class="chip">DER</li>
-            <li class="chip">MVC e MVP</li>
-            <li class="chip">Metodologias ágeis</li>
-          </ul>
-        </article>
-
-        <!-- Certificados -->
-        <h3 class="reveal mt-14 text-lg font-bold text-cream">Certificados Alura</h3>
-        <p class="reveal mt-1 text-sm text-mist" style="--d:60ms">Certificados oficiais, em ordem do mais recente ao
-          mais antigo.</p>
-
-        <ol class="timeline mt-8 space-y-5">
-          <li class="timeline-item reveal" style="--d:0ms">
-            <article class="card card-hover p-5 sm:p-6">
-              <div class="flex flex-wrap items-center gap-2 font-mono text-xs text-stone">
-                <span>13 de outubro de 2026</span><span aria-hidden="true">/</span><span>8 horas</span>
-              </div>
-              <h4 class="mt-2 text-lg font-bold text-cream">Laravel: transações, service container e autenticação</h4>
-              <p class="mt-2 text-sm leading-relaxed text-mist">Aprofundamento no Laravel: transações, service container
-                e autenticação.</p>
-              <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Competências">
-                <li class="chip">PHP e Laravel</li>
-                <li class="chip">Transações</li>
-                <li class="chip">Injeção de dependência</li>
-                <li class="chip">Autenticação</li>
-                <li class="chip">Verificações do usuário</li>
-              </ul>
-              <a class="link-arrow mt-5"
-                href="https://cursos.alura.com.br/certificate/c2245700-3e9a-4800-b600-7ced1a607236?lang=pt_BR"
-                target="_blank" rel="noopener noreferrer">Ver certificado <span class="sr-only">(abre em nova
-                  aba)</span>
-                <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M7 17 17 7M8 7h9v9" />
-                </svg>
-              </a>
-            </article>
-          </li>
-
-          <li class="timeline-item reveal" style="--d:0ms">
-            <article class="card card-hover p-5 sm:p-6">
-              <div class="flex flex-wrap items-center gap-2 font-mono text-xs text-stone">
-                <span>29 e 30 de setembro de 2026</span><span aria-hidden="true">/</span><span>8 horas</span>
-              </div>
-              <h4 class="mt-2 text-lg font-bold text-cream">Laravel: validando formulários, usando sessões e definindo
-                relacionamentos</h4>
-              <p class="mt-2 text-sm leading-relaxed text-mist">Aprofundamento no Laravel: validação de dados de
-                formulários, gerenciamento de sessões e relacionamentos entre entidades.</p>
-              <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Competências">
-                <li class="chip">PHP e Laravel</li>
-                <li class="chip">Validação de formulários</li>
-                <li class="chip">Sessões</li>
-                <li class="chip">Relacionamentos entre modelos</li>
-                <li class="chip">Aplicações web</li>
-              </ul>
-              <a class="link-arrow mt-5"
-                href="https://cursos.alura.com.br/formalCertificate/5e7f6780-3de0-4a95-9839-8f4ba3d11712"
-                target="_blank" rel="noopener noreferrer">Ver certificado <span class="sr-only">(abre em nova
-                  aba)</span>
-                <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M7 17 17 7M8 7h9v9" />
-                </svg>
-              </a>
-            </article>
-          </li>
-
-          <li class="timeline-item reveal" style="--d:0ms">
-            <article class="card card-hover p-5 sm:p-6">
-              <div class="flex flex-wrap items-center gap-2 font-mono text-xs text-stone">
-                <span>12 de junho de 2026</span><span aria-hidden="true">/</span><span>6 horas</span>
-              </div>
-              <h4 class="mt-2 text-lg font-bold text-cream">HTML e CSS: formulários, SEO e acessibilidade</h4>
-              <p class="mt-2 text-sm leading-relaxed text-mist">Construção de formulários, usabilidade, validação de
-                campos, acessibilidade digital e SEO técnico básico.</p>
-              <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Competências">
-                <li class="chip">Formulários HTML</li>
-                <li class="chip">Usabilidade</li>
-                <li class="chip">Acessibilidade</li>
-                <li class="chip">SEO básico</li>
-                <li class="chip">Experiência do usuário</li>
-              </ul>
-              <a class="link-arrow mt-5"
-                href="https://cursos.alura.com.br/certificate/d9f292b4-440f-4ed9-9a9c-4dd4db39751c?lang=pt_BR"
-                target="_blank" rel="noopener noreferrer">Ver certificado <span class="sr-only">(abre em nova
-                  aba)</span>
-                <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M7 17 17 7M8 7h9v9" />
-                </svg>
-              </a>
-            </article>
-          </li>
-
-          <li class="timeline-item reveal" style="--d:0ms">
-            <article class="card card-hover p-5 sm:p-6">
-              <div class="flex flex-wrap items-center gap-2 font-mono text-xs text-stone">
-                <span>8 de junho de 2026</span><span aria-hidden="true">/</span><span>20 horas</span>
-              </div>
-              <h4 class="mt-2 text-lg font-bold text-cream">HTML e CSS: ambiente, estrutura e estilo</h4>
-              <p class="mt-2 text-sm leading-relaxed text-mist">Fundamentos de front-end: ambiente de desenvolvimento,
-                HTML semântico, CSS, layout, Git e GitHub e publicação de sites.</p>
-              <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Competências">
-                <li class="chip">HTML5</li>
-                <li class="chip">CSS3</li>
-                <li class="chip">HTML semântico</li>
-                <li class="chip">Layout</li>
-                <li class="chip">Git e GitHub</li>
-                <li class="chip">Publicação de sites</li>
-              </ul>
-              <a class="link-arrow mt-5"
-                href="https://cursos.alura.com.br/certificate/c3268dc0-8a2b-403b-ae61-1cb2b3a5b1d4?lang=pt_BR"
-                target="_blank" rel="noopener noreferrer">Ver certificado <span class="sr-only">(abre em nova
-                  aba)</span>
-                <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M7 17 17 7M8 7h9v9" />
-                </svg>
-              </a>
-            </article>
-          </li>
-
-          <li class="timeline-item reveal" style="--d:0ms">
-            <article class="card card-hover p-5 sm:p-6">
-              <div class="flex flex-wrap items-center gap-2 font-mono text-xs text-stone">
-                <span>25 de maio de 2026</span><span aria-hidden="true">/</span><span>8 horas</span>
-              </div>
-              <h4 class="mt-2 text-lg font-bold text-cream">Internet: entendendo os fundamentos da web</h4>
-              <p class="mt-2 text-sm leading-relaxed text-mist">Funcionamento da web, comunicação cliente-servidor,
-                representação de dados, evolução das tecnologias e áreas do desenvolvimento de software.</p>
-              <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Competências">
-                <li class="chip">Fundamentos da internet</li>
-                <li class="chip">Cliente-servidor</li>
-                <li class="chip">Representação de dados</li>
-                <li class="chip">Evolução da web</li>
-              </ul>
-              <a class="link-arrow mt-5"
-                href="https://cursos.alura.com.br/certificate/6698d605-ff55-4d1b-a7a7-0a043328c052?lang=pt_BR"
-                target="_blank" rel="noopener noreferrer">Ver certificado <span class="sr-only">(abre em nova
-                  aba)</span>
-                <svg class="icon-move h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M7 17 17 7M8 7h9v9" />
-                </svg>
-              </a>
-            </article>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ============ CONTATO ============ -->
-    <section id="contato" class="section pb-24" aria-labelledby="contato-title">
-      <div class="mx-auto max-w-6xl">
-        <div
-          class="contact-panel reveal relative overflow-hidden rounded-2xl border border-moss/70 bg-graphite/80 p-6 sm:p-10 lg:p-14">
-          <div class="relative grid gap-10 lg:grid-cols-12 lg:items-end">
-            <div class="lg:col-span-7">
-              <p class="font-mono text-xs text-stone">STATUS: AVAILABLE</p>
-              <h2 id="contato-title"
-                class="mt-3 font-pixel text-4xl font-bold uppercase leading-none text-cream sm:text-6xl">Vamos
-                conversar?</h2>
-              <p class="mt-5 max-w-lg leading-relaxed text-mist">
-                Estou em busca da primeira oportunidade como Desenvolvedor PHP/Laravel Júnior ou Estagiário. Escreva
-                para mim ou chame no LinkedIn.
-              </p>
-              <div class="mt-7 flex flex-wrap gap-3">
-                <a class="btn-primary" href="mailto:carlos.vinicius582@gmail.com">Enviar e-mail</a>
-                <button type="button" id="copy-email" class="btn-ghost" data-email="carlos.vinicius582@gmail.com">Copiar
-                  e-mail</button>
-              </div>
-              <p id="copy-feedback" class="mt-3 min-h-[1.25rem] font-mono text-xs text-cream" role="status"
-                aria-live="polite"></p>
-            </div>
-
-            <ul class="grid gap-3 lg:col-span-5">
-              <li>
-                <a class="contact-link" href="mailto:carlos.vinicius582@gmail.com">
-                  <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect width="20" height="16" x="2" y="4" rx="2" />
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                  </svg>
-                  <span class="min-w-0"><span class="block font-mono text-xs text-stone">e-mail</span><span
-                      class="block truncate text-sm text-cream">carlos.vinicius582@gmail.com</span></span>
-                </a>
-              </li>
-              <li>
-                <a class="contact-link" href="https://github.com/carlosvinims" target="_blank"
-                  rel="noopener noreferrer">
-                  <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path
-                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                    <path d="M9 18c-4.51 2-5-2-7-2" />
-                  </svg>
-                  <span class="min-w-0"><span class="block font-mono text-xs text-stone">github</span><span
-                      class="block truncate text-sm text-cream">github.com/carlosvinims</span></span>
-                  <span class="sr-only">(abre em nova aba)</span>
-                </a>
-              </li>
-              <li>
-                <a class="contact-link" href="https://www.linkedin.com/in/carlosvinims" target="_blank"
-                  rel="noopener noreferrer">
-                  <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                    <rect width="4" height="12" x="2" y="9" />
-                    <circle cx="4" cy="4" r="2" />
-                  </svg>
-                  <span class="min-w-0"><span class="block font-mono text-xs text-stone">linkedin</span><span
-                      class="block truncate text-sm text-cream">linkedin.com/in/carlosvinims</span></span>
-                  <span class="sr-only">(abre em nova aba)</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ============ FOOTER ============ -->
-  <footer class="border-t border-moss/40 px-4 py-8 sm:px-6">
-    <div
-      class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 text-center font-mono text-xs text-stone sm:flex-row sm:text-left">
-      <p>&copy; <span id="year">2026</span> Carlos Vinicius Moreira da Silva</p>
-      <p>Quatis, RJ · Brasil</p>
+    <div class="phone term hero-in" style="--d:300ms">
+      <h3>Resumo</h3>
+      <dl>
+        <div class="l" style="--i:0"><dt>Formação</dt><dd>Técnico em Desenvolvimento de Sistemas<br><span class="muted">Firjan SENAI Resende · 2026 a 2027</span></dd></div>
+        <div class="l" style="--i:1"><dt>Foco</dt><dd>PHP, Laravel e MySQL</dd></div>
+        <div class="l" style="--i:2"><dt>Objetivo</dt><dd>Primeira oportunidade como Desenvolvedor PHP Júnior ou Estagiário</dd></div>
+        <div class="l" style="--i:3"><dt>Local</dt><dd>Quatis, Rio de Janeiro</dd></div>
+      </dl>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <!-- Voltar ao topo -->
-  <button id="back-to-top" type="button" class="back-top" aria-label="Voltar ao topo" hidden>
-    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-      stroke-linejoin="round" aria-hidden="true">
-      <path d="m18 15-6-6-6 6" />
-    </svg>
-  </button>
+<section class="sec" id="sobre">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <h2>Sobre mim</h2>
+      <p class="muted">Estudo Desenvolvimento de Sistemas na <strong>Firjan SENAI Resende</strong> e construo minha base prática com PHP e Laravel: aplicações web, CRUDs, banco de dados, consumo de APIs e interfaces responsivas, sempre organizadas em MVC.</p>
+      <p class="muted">Tenho prática com migrations, seeders, Eloquent, rotas, controllers e views Blade, além de modelagem de dados (DER) e conceitos de arquitetura como MVC e MVP.</p>
+      <p class="muted">Comecei a estudar programação em fevereiro/março de 2026 e, desde então, aprendo de forma constante, combinando o curso técnico, cursos online e projetos próprios.</p>
+      <p class="muted">Meu GitHub reúne projetos acadêmicos e próprios que mostram minha evolução, dos fundamentos de desenvolvimento web até aplicações mais completas com Laravel.</p>
+      <div class="note"><strong>Experiência profissional</strong><p class="muted">Ainda não tenho experiência formal na área. Busco minha primeira oportunidade como Júnior ou Estagiário, e minha prática está demonstrada nos projetos abaixo.</p></div>
+    </div>
+    <dl class="stats reveal" style="--d:100ms">
+      <div><dt>Idade</dt><dd class="s"><span data-age>27</span> anos</dd></div>
+      <div><dt>Começou a programar</dt><dd class="s">Fevereiro/março de 2026</dd></div>
+      <div class="w"><dt>Foco atual</dt><dd class="s">PHP e Laravel</dd><dd class="muted xs">Aplicações web, banco de dados e MVC</dd></div>
+      <div class="w"><dt>Estudando agora</dt><dd class="s">Técnico em Desenvolvimento de Sistemas</dd><dd class="muted xs">Firjan SENAI Resende · 2026 a 2027</dd></div>
+    </dl>
+  </div>
+</section>
 
-  <script src="assets/js/main.js" defer></script>
+<section class="sec glow-top" id="projetos">
+  <div class="wrap">
+    <div class="reveal"><h2>Projetos</h2><p class="muted">Um hackathon e três aplicações Laravel que mostram prática com MVC, banco de dados e organização de código.</p></div>
+    <div class="filters reveal" role="group" aria-label="Filtrar projetos">
+      <button class="fbtn on" data-filter="all" aria-pressed="true">Todos</button><button class="fbtn" data-filter="hackathon" aria-pressed="false">Hackathon</button><button class="fbtn" data-filter="laravel" aria-pressed="false">Laravel</button>
+    </div>
+    <div class="cards proj" id="projGrid">
+      <article class="card left feat reveal" data-cat="hackathon">
+        <ul class="tags"><li class="hl">3 melhores</li><li>Desafio Inova SulFlu 2026</li></ul>
+        <h3>Reciclo</h3><p class="quote">"O que sobra para você pode valer para alguém."</p>
+        <p>Proposta de plataforma digital para economia circular, conectando pequenos negócios, catadores, cooperativas e compradores de materiais recicláveis. Facilita a divulgação de resíduos, organiza as coletas e a destinação dos materiais e explora o uso de inteligência artificial.</p>
+        <p>Participei da proposta, da estruturação da solução e da preparação da apresentação (pitch). A equipe ficou entre as três melhores do evento, que incluiu mentorias e capacitação do Sebrae.</p>
+        <ul class="tags"><li>Trabalho em equipe</li><li>Apresentação da solução</li><li>Prototipagem</li><li>Inovação</li><li>Economia circular</li><li>IA aplicada</li></ul>
+        <div class="links"><a class="btn" href="https://carlosvinims.github.io/reciclo/" target="_blank" rel="noopener noreferrer">Conhecer projeto<span class="sr">(abre em nova aba)</span></a><a class="btn btn--ghost" href="https://www.even3.com.br/e/hackaton-desafio-inova-sulflu-611258" target="_blank" rel="noopener noreferrer">Página do hackathon<span class="sr">(abre em nova aba)</span></a></div>
+      </article>
+      <article class="card left reveal" data-cat="laravel">
+        <ul class="tags"><li>Em desenvolvimento</li></ul>
+        <h3>Finance Control</h3><p>Aplicação de controle financeiro em Laravel que centraliza e organiza informações financeiras. Usa MVC, banco de dados, rotas, controllers, models e views.</p>
+        <ul class="tags"><li>PHP</li><li>Laravel</li><li>Blade</li><li>MySQL/SQLite</li><li>Bootstrap</li><li>Tailwind</li><li>Vite</li></ul>
+        <div class="links"><a href="https://github.com/carlosvinims/finance-control" target="_blank" rel="noopener noreferrer">Ver no GitHub<span class="sr">(abre em nova aba)</span></a></div>
+      </article>
+      <article class="card left reveal" data-cat="laravel" style="--d:100ms">
+        <ul class="tags"><li>Estudo, concluído</li></ul>
+        <h3>Catálogo de Produtos</h3><p>Aplicação Laravel para cadastro, gerenciamento e apresentação de produtos. Foi o projeto de prática de CRUD, organização de dados e arquitetura padrão do framework.</p>
+        <ul class="tags"><li>PHP</li><li>Laravel</li><li>Blade</li><li>MySQL</li><li>Bootstrap</li><li>Vite</li></ul>
+        <div class="links"><a href="https://github.com/carlosvinims/catalogo-produtos_laravel" target="_blank" rel="noopener noreferrer">Ver no GitHub<span class="sr">(abre em nova aba)</span></a></div>
+      </article>
+      <article class="card left reveal" data-cat="laravel" style="--d:200ms">
+        <ul class="tags"><li>Em desenvolvimento</li></ul>
+        <h3>Monitor de Cotações</h3><p>Aplicação Laravel de estudo que organiza e apresenta cotações de forma centralizada, explorando MVC, rotas, controllers, views e integração com dados.</p>
+        <ul class="tags"><li>PHP</li><li>Laravel</li><li>Blade</li><li>Composer</li><li>Vite</li></ul>
+        <div class="links"><a href="https://github.com/carlosvinims/monitor-cotacoes-laravel-" target="_blank" rel="noopener noreferrer">Ver no GitHub<span class="sr">(abre em nova aba)</span></a></div>
+      </article>
+    </div>
+    <p class="more reveal"><a href="https://github.com/carlosvinims" target="_blank" rel="noopener noreferrer">Ver todos os repositórios<span class="sr">(abre em nova aba)</span></a></p>
+  </div>
+</section>
+
+<section class="sec" id="tecnologias">
+  <div class="wrap">
+    <div class="reveal"><h2>Tecnologias</h2><p class="muted"><span class="tags inl"><span class="m">Destacado</span></span> conhecimentos principais, em desenvolvimento. Os demais são complementares.</p></div>
+    <div class="cards tech">
+      <article class="card left reveal"><h3>Linguagens</h3><ul class="tags"><li class="m">PHP</li><li class="m">JavaScript</li><li class="m">HTML5</li><li class="m">CSS3</li><li>SQL</li></ul></article>
+      <article class="card left reveal" style="--d:80ms"><h3>Frameworks</h3><ul class="tags"><li class="m">Laravel</li><li class="m">Bootstrap</li><li>Blade</li></ul></article>
+      <article class="card left reveal" style="--d:160ms"><h3>Banco de dados</h3><ul class="tags"><li class="m">MySQL</li><li>SQLite</li><li>Banco relacional</li><li>Modelagem</li><li>DER</li></ul></article>
+      <article class="card left reveal"><h3>Ferramentas</h3><ul class="tags"><li class="m">Git</li><li class="m">GitHub</li><li>Composer</li><li>NPM</li><li>Vite</li><li>Laravel Artisan</li><li>VS Code</li></ul></article>
+      <article class="card left reveal wide" style="--d:80ms"><h3>Conceitos</h3><ul class="tags"><li>MVC</li><li>MVP</li><li>CRUD</li><li>APIs</li><li>Consumo de APIs</li><li>Eloquent ORM</li><li>Migrations</li><li>Seeders</li><li>Rotas</li><li>Controllers</li><li>Views Blade</li><li>Responsividade</li><li>Componentização</li><li>Versionamento</li></ul></article>
+    </div>
+    <div class="cards skills">
+      <article class="card left reveal"><h3>Habilidades técnicas</h3><ul class="check"><li>Desenvolvimento de aplicações web</li><li>CRUDs</li><li>Estruturação de aplicações PHP</li><li>Desenvolvimento com Laravel</li><li>Migrations</li><li>Modelagem e relacionamento de dados</li><li>Interfaces responsivas</li><li>Consumo de APIs</li><li>Organização de código</li><li>Versionamento com Git/GitHub</li><li>Manutenção e evolução de projetos</li></ul></article>
+      <article class="card left reveal" style="--d:100ms"><h3>Habilidades profissionais</h3><ul class="check"><li>Facilidade para aprender</li><li>Raciocínio lógico</li><li>Resolução de problemas</li><li>Organização</li><li>Trabalho em equipe</li><li>Aprendizado contínuo</li><li>Pesquisa e solução prática de problemas</li><li>Adaptabilidade</li><li>Interesse em desenvolvimento de software</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec glow-top" id="formacao">
+  <div class="wrap">
+    <div class="reveal"><h2>Formação</h2></div>
+    <article class="card left reveal edu">
+      <div class="row"><div><p class="muted xs">2026 a 2027</p><h3>Técnico em Desenvolvimento de Sistemas</h3><p class="muted">Firjan SENAI Resende</p></div><ul class="tags"><li>● Em andamento</li></ul></div>
+      <p class="muted">Formação técnica em desenvolvimento de software, análise de sistemas, banco de dados e desenvolvimento web, com metodologias ágeis e modelagem de dados.</p>
+      <ul class="tags"><li>Lógica de programação</li><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>PHP</li><li>MySQL</li><li>DER</li><li>MVC e MVP</li><li>Metodologias ágeis</li></ul>
+    </article>
+
+    <div class="reveal certs-head"><h3>Certificados</h3><p class="muted">Cursos e certificações concluídos, agrupados por área de estudo. Novos certificados, de qualquer instituição, entram aqui conforme eu avanço.</p></div>
+    <div class="cards certs">
+      <article class="card left reveal" aria-labelledby="g1">
+        <div class="row"><h3 id="g1">PHP e Laravel</h3><span class="lvl">Aprofundamento</span></div>
+        <p class="gdesc">Recursos do framework para aplicações mais seguras e organizadas: validação, sessões, autenticação e relacionamentos de dados.</p>
+        <ul class="crows"><li><div><h4>Laravel: transações, service container e autenticação</h4><p class="muted xs">Alura · 13 de outubro de 2026</p><p class="muted sm">Transações, injeção de dependência, autenticação e verificações do usuário.</p></div><a href="https://cursos.alura.com.br/certificate/c2245700-3e9a-4800-b600-7ced1a607236?lang=pt_BR" target="_blank" rel="noopener noreferrer">Ver certificado<span class="sr">(abre em nova aba)</span></a></li><li><div><h4>Laravel: validando formulários, usando sessões e definindo relacionamentos</h4><p class="muted xs">Alura · 29 e 30 de setembro de 2026</p><p class="muted sm">Validação de formulários, sessões e relacionamentos entre modelos.</p></div><a href="https://cursos.alura.com.br/formalCertificate/5e7f6780-3de0-4a95-9839-8f4ba3d11712" target="_blank" rel="noopener noreferrer">Ver certificado<span class="sr">(abre em nova aba)</span></a></li></ul>
+      </article>
+      <article class="card left reveal" style="--d:100ms" aria-labelledby="g2">
+        <div class="row"><h3 id="g2">Desenvolvimento web</h3><span class="lvl">Fundamentos</span></div>
+        <p class="gdesc">Base do desenvolvimento para a web: como a internet funciona, estrutura e estilo de páginas, formulários e acessibilidade.</p>
+        <ul class="crows"><li><div><h4>HTML e CSS: formulários, SEO e acessibilidade</h4><p class="muted xs">Alura · 12 de junho de 2026</p><p class="muted sm">Formulários, usabilidade, acessibilidade e SEO básico.</p></div><a href="https://cursos.alura.com.br/certificate/d9f292b4-440f-4ed9-9a9c-4dd4db39751c?lang=pt_BR" target="_blank" rel="noopener noreferrer">Ver certificado<span class="sr">(abre em nova aba)</span></a></li><li><div><h4>HTML e CSS: ambiente, estrutura e estilo</h4><p class="muted xs">Alura · 8 de junho de 2026</p><p class="muted sm">HTML semântico, CSS, layout, Git e GitHub e publicação de sites.</p></div><a href="https://cursos.alura.com.br/certificate/c3268dc0-8a2b-403b-ae61-1cb2b3a5b1d4?lang=pt_BR" target="_blank" rel="noopener noreferrer">Ver certificado<span class="sr">(abre em nova aba)</span></a></li><li><div><h4>Internet: entendendo os fundamentos da web</h4><p class="muted xs">Alura · 25 de maio de 2026</p><p class="muted sm">Cliente-servidor, representação de dados e evolução da web.</p></div><a href="https://cursos.alura.com.br/certificate/6698d605-ff55-4d1b-a7a7-0a043328c052?lang=pt_BR" target="_blank" rel="noopener noreferrer">Ver certificado<span class="sr">(abre em nova aba)</span></a></li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec cta center" id="contato">
+  <div class="wrap">
+    <h2 class="reveal">Vamos conversar?</h2>
+    <p class="muted reveal">Estou em busca da primeira oportunidade como Desenvolvedor PHP/Laravel Júnior ou Estagiário. Escreva para mim ou chame no LinkedIn.</p>
+    <div class="actions reveal">
+      <a class="btn" href="mailto:carlos.vinicius582@gmail.com">Enviar e-mail</a>
+      <button class="btn btn--ghost" id="copyEmail" type="button" data-email="carlos.vinicius582@gmail.com">Copiar e-mail</button>
+      <a class="btn btn--ghost" href="https://github.com/carlosvinims" target="_blank" rel="noopener noreferrer">GitHub<span class="sr">(abre em nova aba)</span></a>
+      <a class="btn btn--ghost" href="https://www.linkedin.com/in/carlosvinims" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr">(abre em nova aba)</span></a>
+    </div>
+    <p id="copyMsg" class="muted xs" role="status" aria-live="polite"></p>
+  </div>
+</section>
+</main>
+
+<footer class="footer"><div class="wrap"><span>© <span id="year">2026</span> Carlos Vinicius Moreira da Silva</span><span>Quatis, RJ, Brasil</span></div></footer>
+<script src="assets/js/main.js" defer></script>
 </body>
-
 </html>
